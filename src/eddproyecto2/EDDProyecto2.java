@@ -3,7 +3,10 @@ package eddproyecto2;
 
 //import Estructuras.ArbolAVL;
 import Estructuras.ArbolAVL2;
+import Estructuras.HashTable;
 import Estructuras.MatrizAd;
+import Estructuras.Usuario;
+import Vistas.Login;
 
 /**
  *
@@ -14,7 +17,15 @@ public class EDDProyecto2 {
     /**
      * @param args the command line arguments
      */
+    public static HashTable tabla;
+    
     public static void main(String[] args) {
+        tabla = new HashTable(); 
+        tabla.insertar(new Usuario("Fredy","hola"));
+         tabla.insertar(new Usuario("Jesus","hola"));
+         tabla.insertar(new Usuario("Eli","hola"));
+         Login login = new Login();
+         login.setVisible(true);
         // TODO code application logic here
        /* ArbolAVL2 arbol = new ArbolAVL2();
         arbol.insertar("M");
@@ -38,7 +49,7 @@ public class EDDProyecto2 {
         
         arbol.preorden(arbol.ObtenerRaiz());
         arbol.graficarArbol();*/
-       MatrizAd matriz = new MatrizAd();
+       //MatrizAd matriz = new MatrizAd();
        
        /*for(int i=0;i<3;i++){
            for(int j=0;j<;j++){
@@ -50,7 +61,7 @@ public class EDDProyecto2 {
            }
        }*/
        //matriz.recorrerMatriz();
-        matriz.graficarMatriz();
+        //matriz.graficarMatriz();
        
     }
     

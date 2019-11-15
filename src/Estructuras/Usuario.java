@@ -5,6 +5,8 @@
  */
 package Estructuras;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author USUARIO
@@ -16,11 +18,11 @@ public class Usuario {
     private String fechaHora;
     private MatrizAd matriz;
 
-    public Usuario(String nickname, String contrasenia, String fechaHora, MatrizAd matriz) {
+    public Usuario(String nickname, String contrasenia) {
         this.nickname = nickname;
         this.contrasenia = contrasenia;
-        this.fechaHora = fechaHora;
-        this.matriz = matriz;
+        this.fechaHora = LocalDateTime.now().toString();
+        this.matriz = new MatrizAd();
     }
 
     public String getNickname() {

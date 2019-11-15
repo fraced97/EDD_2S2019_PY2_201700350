@@ -9,18 +9,29 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 
 public class HashTable {
-    
-    Usuario[] usuario;
+
+   
+    private Usuario[] usuario;
     int objeto=0;
     int tamanio;
     String nombreArchivo;
 
     public HashTable() {
-        
+        this.tamanio = 7; 
         objeto = 0;
         this.usuario = new Usuario[tamanio];
-        this.tamanio = 7;
+        
     }
+
+    public Usuario[] getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario[] usuario) {
+        this.usuario = usuario;
+    }
+    
+    
     
  public void generarPrimo(){
         int x = tamanio;
