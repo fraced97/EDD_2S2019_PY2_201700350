@@ -23,9 +23,9 @@ public class Usuario {
         this.contrasenia = contrasenia;
         this.fechaHora = LocalDateTime.now().toString();
         this.matriz = new MatrizAd();
-        this.matriz.insertarElemento(0, 0, new ArbolAVL2("Raiz"));
-        this.matriz.insertarElemento(0, 1, new ArbolAVL2("Raiz/"));
-        this.matriz.insertarElemento(1, 0, new ArbolAVL2("Raiz/"));
+        this.matriz.insertarElemento(0, 0, new ArbolAVL2("Raiz","Raiz"));
+        this.matriz.insertarElemento(0, 1, new ArbolAVL2("Raiz/","Inicio"));
+        this.matriz.insertarElemento(1, 0, new ArbolAVL2("Raiz/","Inicio"));
         
     }
 

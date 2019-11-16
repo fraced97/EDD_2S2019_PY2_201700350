@@ -82,13 +82,7 @@ public class ArbolAVL2 {
         this.raiz = raiz;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    
 
     /*public String getNombreArchivo() {
         return nombreArchivo;
@@ -99,12 +93,30 @@ public class ArbolAVL2 {
         this.nombreArchivo = nombreArchivo;
     }*/
     private Nodo raiz;
-    String name;
+
+    public String getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    String ruta;
+    String nombre;
     //String nombreArchivo;
 
-    public ArbolAVL2(String nombreCarpeta) {
+    public ArbolAVL2(String nombreCarpeta, String nombreOriginal) {
         raiz = null;
-        this.name=nombreCarpeta;
+        this.ruta=nombreCarpeta;
+        this.nombre = nombreOriginal;
         //mostrar = new ArrayList<Usuario>();
     }
 

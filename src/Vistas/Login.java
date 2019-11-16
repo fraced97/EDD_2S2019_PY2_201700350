@@ -112,7 +112,10 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        for(Usuario u: EDDProyecto2.tabla.getUsuario()){
+        if(txtNombre.getText().equalsIgnoreCase("Admin")&&txtContra.getText().equalsIgnoreCase("Admin")){
+            System.out.println("admin");
+        }else{
+            for(Usuario u: EDDProyecto2.tabla.getUsuario()){
             if(u!=null){
                if(u.getNickname().equals(txtNombre.getText())&&u.getContrasenia().equals(txtContra.getText())){
                 usuarioActual=u;
@@ -124,6 +127,8 @@ public class Login extends javax.swing.JFrame {
             }
             
         }
+        }
+        
         
         
     }//GEN-LAST:event_jButton1ActionPerformed

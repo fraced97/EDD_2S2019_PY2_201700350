@@ -124,7 +124,7 @@ public class MatrizAd {
     //private ArbolAVL2 arbol;
     public MatrizAd() {
         //this.raiz= new NodoMatrizAd(-1,-1,new ArbolAVL2());
-        this.raiz = new NodoMatrizAd(-1, -1, new ArbolAVL2("Root"));
+        this.raiz = new NodoMatrizAd(-1, -1, new ArbolAVL2("Root","Nombre"));
         //this->raiz->frente=primeraMatriz;
         //this->primeraMatriz->fondo=raiz;
         //this->primeraMatriz=NULL;
@@ -248,7 +248,7 @@ public class MatrizAd {
         //aux= new NodoMatrizAd(x,-1,"Col",0,"","","","");
         ///////////////////////
         NodoMatrizAd columna;
-        columna = insertarColumna(new NodoMatrizAd(x, -1, new ArbolAVL2("Root")), cabezaColumna);
+        columna = insertarColumna(new NodoMatrizAd(x, -1, new ArbolAVL2("Root","Nombre")), cabezaColumna);
         return columna;
     }
 
@@ -260,7 +260,7 @@ public class MatrizAd {
         //aux= new NodoMatriz3D(-1,y,"Fila",0,"","","","");
         ///////////////////////
         NodoMatrizAd fila;
-        fila = insertarFila(new NodoMatrizAd(-1, y, new ArbolAVL2("Root")), cabezaFila);
+        fila = insertarFila(new NodoMatrizAd(-1, y, new ArbolAVL2("Root","Nombre")), cabezaFila);
         return fila;
     }
 
@@ -322,7 +322,7 @@ public class MatrizAd {
                 //aux1=aux;
                 while (aux_Fila != null) {
              
-                    System.out.println(aux_Fila.getArbol().getName() + " " + String.valueOf(aux_Fila.getX()) + " " + String.valueOf(aux_Fila.getY()));
+                    //System.out.println(aux_Fila.getArbol().getRuta() + " " + String.valueOf(aux_Fila.getX()) + " " + String.valueOf(aux_Fila.getY()));
                     aux_Fila = aux_Fila.getSiguiente();
                 }
  
@@ -375,7 +375,7 @@ public class MatrizAd {
                     //cout << aux1->dato<<" ";
                     //if (aux_Fila.getArbol().equals("Raiz")) {
                     if (aux_Fila.getAbajo() != null) {
-                        escribir.println("\"" + (aux_Fila.getArbol().getName()) + " (" + aux_Fila.getX() + ", " + aux_Fila.getY() + ") " + "\"->\"" + (aux_Fila.getAbajo().getArbol().getName()) + " (" + aux_Fila.getAbajo().getX() + ", " + aux_Fila.getAbajo().getY() + ") " + "\"" + "[dir=both];");
+                        escribir.println("\"" + (aux_Fila.getArbol().getNombre()) + " (" + aux_Fila.getX() + ", " + aux_Fila.getY() + ") " + "\"->\"" + (aux_Fila.getAbajo().getArbol().getNombre()) + " (" + aux_Fila.getAbajo().getX() + ", " + aux_Fila.getAbajo().getY() + ") " + "\"" + "[dir=both];");
                     }
                     //escribir.println("\"" + aux_Fila.getArbol() + ", (" + aux_Fila.getX() + "," + aux_Fila.getY() + ")" + "\"->");
                     if (aux_Fila.getAbajo() != null) {
@@ -391,7 +391,7 @@ public class MatrizAd {
                         while (true) {
                             while (temp != null) {
                                 if (temp.getAbajo() != null) {
-                                    escribir.println("\"" + (temp.getArbol().getName()) + " (" + temp.getX() + ", " + temp.getY() + ") " + "\"->\"" + (temp.getAbajo().getArbol().getName()) + " (" + temp.getAbajo().getX() + ", " + temp.getAbajo().getY() + ") " + "\"" + "[dir=both];");
+                                    escribir.println("\"" + (temp.getArbol().getNombre()) + " (" + temp.getX() + ", " + temp.getY() + ") " + "\"->\"" + (temp.getAbajo().getArbol().getNombre()) + " (" + temp.getAbajo().getX() + ", " + temp.getAbajo().getY() + ") " + "\"" + "[dir=both];");
                                 }
                                 temp = temp.getAbajo();
                             }
@@ -409,7 +409,7 @@ public class MatrizAd {
                     if (aux_Fila.getSiguiente() != null) {
                         escribir.println("rank=same{");
                         if (aux_Fila.getSiguiente() != null) {
-                            escribir.println("\"" + (aux_Fila.getArbol().getName()) + " (" + aux_Fila.getX() + ", " + aux_Fila.getY() + ") " + "\"->\"" + (aux_Fila.getSiguiente().getArbol().getName()) + " (" + aux_Fila.getSiguiente().getX() + ", " + aux_Fila.getSiguiente().getY() + ") " + "\"" + "[dir=both];");
+                            escribir.println("\"" + (aux_Fila.getArbol().getNombre()) + " (" + aux_Fila.getX() + ", " + aux_Fila.getY() + ") " + "\"->\"" + (aux_Fila.getSiguiente().getArbol().getNombre()) + " (" + aux_Fila.getSiguiente().getX() + ", " + aux_Fila.getSiguiente().getY() + ") " + "\"" + "[dir=both];");
                         }
                         //escribir.println("\"" + aux_Fila.getArbol() + ", (" + aux_Fila.getX() + "," + aux_Fila.getY() + ")" + "\"->");
                         escribir.println("}");
@@ -423,7 +423,7 @@ public class MatrizAd {
                             while (temp != null) {
                                 if (temp.getSiguiente() != null) {
                                     escribir.println("rank=same{");
-                                    escribir.println("\"" + (temp.getArbol().getName()) + " (" + temp.getX() + ", " + temp.getY() + ") " + "\"->\"" + (temp.getSiguiente().getArbol().getName()) + " (" + temp.getSiguiente().getX() + ", " + temp.getSiguiente().getY() + ") " + "\"" + "[dir=both];");
+                                    escribir.println("\"" + (temp.getArbol().getNombre()) + " (" + temp.getX() + ", " + temp.getY() + ") " + "\"->\"" + (temp.getSiguiente().getArbol().getNombre()) + " (" + temp.getSiguiente().getX() + ", " + temp.getSiguiente().getY() + ") " + "\"" + "[dir=both];");
                                     escribir.println("}");
                                 }
                                 temp = temp.getSiguiente();
@@ -498,7 +498,7 @@ public class MatrizAd {
         return null;
     }
 
-    public void insertarInterseccion(String padre, String hijo) {
+    public void insertarInterseccion(String padre, String hijo,String nombre) {
         
         NodoMatrizAd aux_columna;
         NodoMatrizAd aux_Fila;
@@ -517,7 +517,7 @@ public class MatrizAd {
                 aux_columna = aux_columna.siguiente;
                 while (aux_columna != null) {
                     
-                    if (aux_columna.arbol.getName().equals(padre)) {
+                    if (aux_columna.arbol.getRuta().equals(padre)) {
                         
                         PadreX=aux_columna.getX();
                         PadreY=aux_columna.getY();
@@ -532,7 +532,7 @@ public class MatrizAd {
             aux_Fila = aux_Fila.abajo;
             if(aux_Fila.siguiente!=null){
                 while(aux_Fila!=null){
-                    if(aux_Fila.arbol.getName().equals(hijo)){
+                    if(aux_Fila.arbol.getRuta().equals(hijo)){
                         HijoX = aux_Fila.getX();
                         HijoY = aux_Fila.getY();
                         //break;
@@ -542,7 +542,7 @@ public class MatrizAd {
                 
             }
         }
-        this.insertarElemento(HijoX,PadreY, new ArbolAVL2(hijo));
+        this.insertarElemento(HijoX,PadreY, new ArbolAVL2(hijo,nombre));
 
     }
 

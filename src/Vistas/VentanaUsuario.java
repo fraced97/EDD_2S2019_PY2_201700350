@@ -27,16 +27,16 @@ public final class VentanaUsuario extends javax.swing.JFrame {
     /**
      * Creates new form VentanaUsuario
      */
-    NodoMatrizAd interseccion;
-    NodoMatrizAd antes;
-    NodoMatrizAd father;
+                NodoMatrizAd interseccion;
+        NodoMatrizAd antes;
+                NodoMatrizAd father;
     
     public VentanaUsuario() {
         initComponents();
         interseccion = null;
         father=usuarioActual.getMatriz().buscarMatriz(0, 1);
         
-        System.out.println(father.getArbol().getName());
+        System.out.println(father.getArbol().getRuta());
         /*DefaultListModel dlm = new DefaultListModel();
         dlm.addElement(new ListEntry("AAA", new ImageIcon("C:\\Users\\USUARIO\\Documents\\NetBeansProjects\\EDDProyecto2\\carpeta2.png")));  
         jList1 = new JList(dlm);
@@ -59,7 +59,7 @@ public final class VentanaUsuario extends javax.swing.JFrame {
        
         while(temp!=null){
             
-            dlm.addElement(new ListEntry(temp.getArbol().getName(), new ImageIcon("carpeta2.png")));    
+            dlm.addElement(new ListEntry(temp.getArbol().getNombre(), new ImageIcon("carpeta2.png")));    
             
             temp = temp.getSiguiente();
             
@@ -84,6 +84,7 @@ public final class VentanaUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jRadioButton1 = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         btCrearC = new javax.swing.JButton();
         btModificarC = new javax.swing.JButton();
@@ -100,10 +101,13 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
+        abrirC = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList<>();
+        jButton1 = new javax.swing.JButton();
+
+        jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(0, 0));
@@ -173,16 +177,23 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jList1);
 
-        jButton1.setText("Abrir Carpeta");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        abrirC.setText("Abrir Carpeta");
+        abrirC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                abrirCActionPerformed(evt);
             }
         });
 
         jButton2.setText("Abrir Archivo");
 
         jScrollPane1.setViewportView(jList3);
+
+        jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,28 +209,23 @@ public final class VentanaUsuario extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(210, 210, 210))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(20, 20, 20)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(210, 210, 210))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addComponent(abrirC, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+                                .addComponent(jButton1))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2))
+                        .addGap(26, 26, 26))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,17 +242,19 @@ public final class VentanaUsuario extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
+                            .addComponent(abrirC)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButton2)
+                                .addComponent(jButton1)))
                         .addGap(7, 7, 7)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -259,15 +267,15 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         NodoMatrizAd temp;
         temp=father;
         
-        String aux = father.getArbol().getName()+name+"/";
+        String aux = father.getArbol().getRuta()+name+"/";
         while(true){
             if(temp.getAbajo()!=null){
                 temp =temp.getAbajo();
                 
             }else{
-                usuarioActual.getMatriz().insertarElemento(0, temp.getY()+1, new ArbolAVL2(aux));
-                usuarioActual.getMatriz().insertarElemento(temp.getY()+1, 0, new ArbolAVL2(aux));
-                usuarioActual.getMatriz().insertarInterseccion(father.getArbol().getName(), aux);
+                usuarioActual.getMatriz().insertarElemento(0, temp.getY()+1, new ArbolAVL2(aux,name));
+                usuarioActual.getMatriz().insertarElemento(temp.getY()+1, 0, new ArbolAVL2(aux,name));
+                usuarioActual.getMatriz().insertarInterseccion(father.getArbol().getRuta(), aux,name);
                 break;
                                
             }
@@ -278,16 +286,38 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btCrearCActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void abrirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirCActionPerformed
         // TODO add your handling code here:
-        String name = JOptionPane.showInputDialog(this, "Escriba el nombre de la Carpeta");
-
-    }//GEN-LAST:event_jButton1ActionPerformed
+                NodoMatrizAd aux = this.father.getSiguiente();
+                    NodoMatrizAd fatherAux;
+                int carpetaSeleccionada = jList1.getSelectedIndex();
+                for(int i=0; i<carpetaSeleccionada;i++){
+                    aux = aux.getSiguiente();
+                }
+                    fatherAux=usuarioActual.getMatriz().buscarMatriz(0, aux.getY());
+                String carpetaAbrir = aux.getArbol().getRuta();
+            while(true){
+             if(fatherAux.getArbol().getRuta().equals(carpetaAbrir)){
+                 father = fatherAux;
+                 break;
+             }else{
+                 fatherAux = fatherAux.getAbajo();
+             }
+         }
+            this.Carpetas();
+    }//GEN-LAST:event_abrirCActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         usuarioActual.getMatriz().graficarMatriz();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Login login = new Login();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -381,6 +411,7 @@ class ListEntryCellRenderer
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton abrirC;
     private javax.swing.JButton btCrearA;
     private javax.swing.JButton btCrearC;
     private javax.swing.JButton btEliminarA;
@@ -399,6 +430,7 @@ class ListEntryCellRenderer
     private javax.swing.JList<String> jList3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables

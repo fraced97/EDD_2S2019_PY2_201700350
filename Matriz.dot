@@ -1,24 +1,32 @@
 digraph G {
 
 node [shape=box, color=cornflowerblue ];
-"Raiz (0, 0) "->"Raiz/ (0, 1) "[dir=both];
-"Raiz/ (0, 1) "->"Raiz/sdfaf/ (0, 2) "[dir=both];
-"Raiz/sdfaf/ (0, 2) "->"Raiz/gfdgdfg/ (0, 3) "[dir=both];
-"Raiz/sdfaf/ (2, 0) "->"Raiz/sdfaf/ (2, 1) "[dir=both];
-"Raiz/gfdgdfg/ (3, 0) "->"Raiz/gfdgdfg/ (3, 1) "[dir=both];
+"Raiz (0, 0) "->"Inicio (0, 1) "[dir=both];
+"Inicio (0, 1) "->"quepedo (0, 2) "[dir=both];
+"quepedo (0, 2) "->"jaja (0, 3) "[dir=both];
+"jaja (0, 3) "->"hola (0, 4) "[dir=both];
+"quepedo (2, 0) "->"quepedo (2, 1) "[dir=both];
+"jaja (3, 0) "->"jaja (3, 1) "[dir=both];
+"hola (4, 0) "->"hola (4, 2) "[dir=both];
 rank=same{
-"Raiz (0, 0) "->"Raiz/ (1, 0) "[dir=both];
+"Raiz (0, 0) "->"Inicio (1, 0) "[dir=both];
 }
 rank=same{
-"Raiz/ (1, 0) "->"Raiz/sdfaf/ (2, 0) "[dir=both];
+"Inicio (1, 0) "->"quepedo (2, 0) "[dir=both];
 }
 rank=same{
-"Raiz/sdfaf/ (2, 0) "->"Raiz/gfdgdfg/ (3, 0) "[dir=both];
+"quepedo (2, 0) "->"jaja (3, 0) "[dir=both];
 }
 rank=same{
-"Raiz/ (0, 1) "->"Raiz/sdfaf/ (2, 1) "[dir=both];
+"jaja (3, 0) "->"hola (4, 0) "[dir=both];
 }
 rank=same{
-"Raiz/sdfaf/ (2, 1) "->"Raiz/gfdgdfg/ (3, 1) "[dir=both];
+"Inicio (0, 1) "->"quepedo (2, 1) "[dir=both];
+}
+rank=same{
+"quepedo (2, 1) "->"jaja (3, 1) "[dir=both];
+}
+rank=same{
+"quepedo (0, 2) "->"hola (4, 2) "[dir=both];
 }
 }
