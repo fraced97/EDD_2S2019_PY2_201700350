@@ -5,14 +5,24 @@
  */
 package Vistas;
 
+import Estructuras.ArbolAVL2;
 import Estructuras.MatrizAd.NodoMatrizAd;
+import static Vistas.Login.usuarioActual;
+import java.awt.Component;
+import java.awt.Image;
+import javax.swing.DefaultListModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.ListCellRenderer;
 
 /**
  *
  * @author USUARIO
  */
-public class VentanaUsuario extends javax.swing.JFrame {
+public final class VentanaUsuario extends javax.swing.JFrame {
 
     /**
      * Creates new form VentanaUsuario
@@ -23,7 +33,47 @@ public class VentanaUsuario extends javax.swing.JFrame {
     
     public VentanaUsuario() {
         initComponents();
+        interseccion = null;
+        father=usuarioActual.getMatriz().buscarMatriz(0, 1);
+        
+        System.out.println(father.getArbol().getName());
+        /*DefaultListModel dlm = new DefaultListModel();
+        dlm.addElement(new ListEntry("AAA", new ImageIcon("C:\\Users\\USUARIO\\Documents\\NetBeansProjects\\EDDProyecto2\\carpeta2.png")));  
+        jList1 = new JList(dlm);
+        this.jList3 = new JList(dlm);
+        jList1.updateUI();
+       
+        jList1.setCellRenderer(new ListEntryCellRenderer());
+        jList3.setCellRenderer(new ListEntryCellRenderer());
+        this.pack();
+       
+        jList1.updateUI();
+        jList3.updateUI();*/
+        Carpetas();
+        
     }
+    
+    public void Carpetas(){
+        DefaultListModel dlm = new DefaultListModel();
+        NodoMatrizAd temp = this.father.getSiguiente();
+       
+        while(temp!=null){
+            
+            dlm.addElement(new ListEntry(temp.getArbol().getName(), new ImageIcon("carpeta2.png")));    
+            
+            temp = temp.getSiguiente();
+            
+        }
+        
+        //jList1 = new JList(dlm);
+        jList1.setModel(dlm);
+        jList1.setCellRenderer(new ListEntryCellRenderer());
+        jList1.updateUI();
+        
+        
+        
+    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,10 +100,10 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList3 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(0, 0));
@@ -78,7 +128,12 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jPanel2.add(btEliminarC);
         btEliminarC.setBounds(10, 110, 220, 30);
 
-        jButton4.setText("Subir");
+        jButton4.setText("Graficar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton4);
         jButton4.setBounds(10, 150, 220, 30);
 
@@ -97,7 +152,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jPanel3.add(btEliminarA);
         btEliminarA.setBounds(20, 100, 210, 30);
 
-        jButton8.setText("Subir");
+        jButton8.setText("Graficar");
         jPanel3.add(jButton8);
         jButton8.setBounds(20, 140, 210, 30);
 
@@ -118,13 +173,6 @@ public class VentanaUsuario extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jList1);
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = {};
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane3.setViewportView(jList2);
-
         jButton1.setText("Abrir Carpeta");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +181,8 @@ public class VentanaUsuario extends javax.swing.JFrame {
         });
 
         jButton2.setText("Abrir Archivo");
+
+        jScrollPane1.setViewportView(jList3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -148,24 +198,28 @@ public class VentanaUsuario extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(210, 210, 210))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(20, 20, 20)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(210, 210, 210))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +233,9 @@ public class VentanaUsuario extends javax.swing.JFrame {
                         .addGap(0, 0, 0)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,14 +244,9 @@ public class VentanaUsuario extends javax.swing.JFrame {
                         .addGap(7, 7, 7)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -204,8 +255,25 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
     private void btCrearCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCrearCActionPerformed
         // TODO add your handling code here:
+        String name = JOptionPane.showInputDialog(this, "Escriba el nombre de la Carpeta");
+        NodoMatrizAd temp;
+        temp=father;
         
-        
+        String aux = father.getArbol().getName()+name+"/";
+        while(true){
+            if(temp.getAbajo()!=null){
+                temp =temp.getAbajo();
+                
+            }else{
+                usuarioActual.getMatriz().insertarElemento(0, temp.getY()+1, new ArbolAVL2(aux));
+                usuarioActual.getMatriz().insertarElemento(temp.getY()+1, 0, new ArbolAVL2(aux));
+                usuarioActual.getMatriz().insertarInterseccion(father.getArbol().getName(), aux);
+                break;
+                               
+            }
+            
+        }
+        Carpetas();
         
         
     }//GEN-LAST:event_btCrearCActionPerformed
@@ -215,6 +283,11 @@ public class VentanaUsuario extends javax.swing.JFrame {
         String name = JOptionPane.showInputDialog(this, "Escriba el nombre de la Carpeta");
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        usuarioActual.getMatriz().graficarMatriz();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,6 +324,62 @@ public class VentanaUsuario extends javax.swing.JFrame {
         });
     }
 
+    
+  
+class ListEntry
+{
+   private String value;
+   private ImageIcon icon;
+  
+   public ListEntry(String value, ImageIcon icon) {
+      this.value = value;
+      this.icon = icon;
+   }
+  
+   public String getValue() {
+      return value;
+   }
+  
+   public ImageIcon getIcon() {
+      return icon;
+   }
+  
+   public String toString() {
+      return value;
+   }
+}
+  
+class ListEntryCellRenderer
+ extends JLabel implements ListCellRenderer
+{
+   private JLabel label;
+  
+   public Component getListCellRendererComponent(JList list, Object value,
+                                                 int index, boolean isSelected,
+                                                 boolean cellHasFocus) {
+      ListEntry entry = (ListEntry) value;
+  
+      setText(value.toString());
+      setIcon(entry.getIcon());
+   
+      if (isSelected) {
+         setBackground(list.getSelectionBackground());
+         setForeground(list.getSelectionForeground());
+      }
+      else {
+         setBackground(list.getBackground());
+         setForeground(list.getForeground());
+      }
+  
+      setEnabled(list.isEnabled());
+      setFont(list.getFont());
+      setOpaque(true);
+  
+      return this;
+   }
+}
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCrearA;
     private javax.swing.JButton btCrearC;
@@ -266,11 +395,11 @@ public class VentanaUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
+    public javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jList3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }

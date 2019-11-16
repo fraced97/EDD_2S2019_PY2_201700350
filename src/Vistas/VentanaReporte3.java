@@ -7,6 +7,7 @@ package Vistas;
 
 import javax.swing.JFrame;
 import java.awt.*;
+import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -19,15 +20,19 @@ public class VentanaReporte3 extends JFrame {
     
     JLabel imagen;
     JScrollPane scroll;
-    public VentanaReporte3(String ruta){
+    public VentanaReporte3(String ruta) throws InterruptedException{
+        
         super("Ventana Reporte");
+        Thread.sleep(1000);
         setSize(900,600);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(EXIT_ON_CLOSE);
         imagen= new JLabel(new ImageIcon(ruta));
         scroll = new JScrollPane();
         scroll.setViewportView(imagen);
         add(scroll);
         setVisible(true);
+        File archivo1 = new File(ruta);
+        archivo1.delete();
         
     }
     

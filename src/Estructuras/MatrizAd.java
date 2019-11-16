@@ -308,11 +308,7 @@ public class MatrizAd {
     }
 
     public void recorrerMatriz() {
-        //File punto = new File(".");
-        //PrintWriter escribir=null;
-        //try {
-        //escribir = new PrintWriter(punto.getAbsolutePath()+"//"+"Matriz.dot","UTF-8");
-        //escribir.println("digraph G {\n");
+     
         NodoMatrizAd aux_columna;
         NodoMatrizAd aux_Fila;
         //NodoMatrizAd auxRaiz;
@@ -321,79 +317,34 @@ public class MatrizAd {
         boolean condicion = true;
         while (condicion) {
             while (aux_columna != null) {
-                /*if (aux_columna.abajo != null) {
-                        aux_columna = aux_columna.getAbajo();
-                    } else {
-                        break;
-                    }
-                    if (aux_columna.getSiguiente() != null) {
-                        aux_Fila = aux_columna.getSiguiente();
-                    } else {
-                        break;
-                    }*/
+        
                 aux_Fila = aux_columna;
                 //aux1=aux;
                 while (aux_Fila != null) {
-                    //cout << aux1->dato<<" ";
-                    /*              aux_Fila = aux_Fila.getSiguiente();
-                    if(aux_Fila.getSiguiente()!=null){
-                        escribir.println("\"" + (aux_Fila.getNombre()) + "\"->\"" + (aux_Fila.getSiguiente().getNombre()) +  "\""+"[dir=both];");
-                    }
-                    if(aux_Fila.getAbajo()!=null){
-                        escribir.println("\"" + (aux_Fila.getNombre()) + "\"->\"" + (aux_Fila.getAbajo().getNombre()) +  "\""+"[dir=both];");
-                    }*/
-                    System.out.println(aux_Fila.getArbol() + " " + String.valueOf(aux_Fila.getX()) + " " + String.valueOf(aux_Fila.getY()));
+             
+                    System.out.println(aux_Fila.getArbol().getName() + " " + String.valueOf(aux_Fila.getX()) + " " + String.valueOf(aux_Fila.getY()));
                     aux_Fila = aux_Fila.getSiguiente();
                 }
-                /*System.out.println("------------------------------");
-                    System.out.println(aux_columna.getArbol());
-                    System.out.println("---------------------------------");
-                    System.out.println(aux_columna.getX());
-                    System.out.println("----------------");
-                    System.out.println(aux_columna.getY());*/
+ 
                 if (aux_columna.getAbajo() != null) {
                     aux_columna = aux_columna.getAbajo();
                 } else {
                     break;
                 }
 
-                // aux = aux->abajo;
-                //cout<<""<<endl;
+                
             }
-            //aux=auxRaiz;
-            //System.out.println("Salio del primer while");
+           
             if (aux_columna.getAbajo() == null) {
                 System.out.println("   ENTRO EN LA COLUMNA NULA");
                 //aux= aux->frente;
                 //auxRaiz=auxRaiz->frente;
                 condicion = false;
                 break;
-            }//else
-            //{
-            //  condicion= false;
-            //break;
-            //}
+            }
         }
-        /*escribir.println("}");
-
-        escribir.close();
-        ProcessBuilder abrir;
-        String rutaImagen=punto.getAbsolutePath()+"//"+"MatrizImagen.jpg";
-        String rutaDot= punto.getAbsolutePath()+"//"+"Matriz.dot";
-        abrir = new ProcessBuilder("dot", "-Tjpg", "-o",rutaImagen,rutaDot);*/
-
-        //abrir = new ProcessBuilder("dot -Tjpg Arbol.dot -o imagenArbol.jpg");
-        //system("dot -Tjpg Arbol.dot -o imagenArbol.jpg")
-        //os.system("imagenArbol.jpg")
-        /*abrir.redirectErrorStream(true);
-        abrir.start();*/
-        ///////////////////////////// Creo una ventana nueva con la imagen 
-        //ScrollPaneReport temporal3= new ScrollPaneReport(rutaImagen);
-        //VentanaReporte temporal4 = new VentanaReporte(rutaImagen);
-        //temporal4.abrirVentana(rutaImagen);
-        //} catch (Exception e) {
-        //System.out.println("ERROR PARA CREAR ARCHIVO");
-        //}
+  
+ 
     }
 
     public void graficarMatriz2(PrintWriter escribir) {
@@ -416,12 +367,15 @@ public class MatrizAd {
                     break;
                 }*/
                 //aux1=aux;
+                aux_columna=aux_columna.getAbajo(); ///IMPORTANTE
+                aux_columna=aux_columna.getSiguiente(); ///importante para que no se miren la cabeceras
                 aux_Fila = aux_columna;
+                
                 while (aux_Fila != null) {
                     //cout << aux1->dato<<" ";
                     //if (aux_Fila.getArbol().equals("Raiz")) {
                     if (aux_Fila.getAbajo() != null) {
-                        escribir.println("\"" + (aux_Fila.getArbol()) + " (" + aux_Fila.getX() + ", " + aux_Fila.getY() + ") " + "\"->\"" + (aux_Fila.getAbajo().getArbol()) + " (" + aux_Fila.getAbajo().getX() + ", " + aux_Fila.getAbajo().getY() + ") " + "\"" + "[dir=both];");
+                        escribir.println("\"" + (aux_Fila.getArbol().getName()) + " (" + aux_Fila.getX() + ", " + aux_Fila.getY() + ") " + "\"->\"" + (aux_Fila.getAbajo().getArbol().getName()) + " (" + aux_Fila.getAbajo().getX() + ", " + aux_Fila.getAbajo().getY() + ") " + "\"" + "[dir=both];");
                     }
                     //escribir.println("\"" + aux_Fila.getArbol() + ", (" + aux_Fila.getX() + "," + aux_Fila.getY() + ")" + "\"->");
                     if (aux_Fila.getAbajo() != null) {
@@ -437,7 +391,7 @@ public class MatrizAd {
                         while (true) {
                             while (temp != null) {
                                 if (temp.getAbajo() != null) {
-                                    escribir.println("\"" + (temp.getArbol()) + " (" + temp.getX() + ", " + temp.getY() + ") " + "\"->\"" + (temp.getAbajo().getArbol()) + " (" + temp.getAbajo().getX() + ", " + temp.getAbajo().getY() + ") " + "\"" + "[dir=both];");
+                                    escribir.println("\"" + (temp.getArbol().getName()) + " (" + temp.getX() + ", " + temp.getY() + ") " + "\"->\"" + (temp.getAbajo().getArbol().getName()) + " (" + temp.getAbajo().getX() + ", " + temp.getAbajo().getY() + ") " + "\"" + "[dir=both];");
                                 }
                                 temp = temp.getAbajo();
                             }
@@ -455,7 +409,7 @@ public class MatrizAd {
                     if (aux_Fila.getSiguiente() != null) {
                         escribir.println("rank=same{");
                         if (aux_Fila.getSiguiente() != null) {
-                            escribir.println("\"" + (aux_Fila.getArbol()) + " (" + aux_Fila.getX() + ", " + aux_Fila.getY() + ") " + "\"->\"" + (aux_Fila.getSiguiente().getArbol()) + " (" + aux_Fila.getSiguiente().getX() + ", " + aux_Fila.getSiguiente().getY() + ") " + "\"" + "[dir=both];");
+                            escribir.println("\"" + (aux_Fila.getArbol().getName()) + " (" + aux_Fila.getX() + ", " + aux_Fila.getY() + ") " + "\"->\"" + (aux_Fila.getSiguiente().getArbol().getName()) + " (" + aux_Fila.getSiguiente().getX() + ", " + aux_Fila.getSiguiente().getY() + ") " + "\"" + "[dir=both];");
                         }
                         //escribir.println("\"" + aux_Fila.getArbol() + ", (" + aux_Fila.getX() + "," + aux_Fila.getY() + ")" + "\"->");
                         escribir.println("}");
@@ -469,7 +423,7 @@ public class MatrizAd {
                             while (temp != null) {
                                 if (temp.getSiguiente() != null) {
                                     escribir.println("rank=same{");
-                                    escribir.println("\"" + (temp.getArbol()) + " (" + temp.getX() + ", " + temp.getY() + ") " + "\"->\"" + (temp.getSiguiente().getArbol()) + " (" + temp.getSiguiente().getX() + ", " + temp.getSiguiente().getY() + ") " + "\"" + "[dir=both];");
+                                    escribir.println("\"" + (temp.getArbol().getName()) + " (" + temp.getX() + ", " + temp.getY() + ") " + "\"->\"" + (temp.getSiguiente().getArbol().getName()) + " (" + temp.getSiguiente().getX() + ", " + temp.getSiguiente().getY() + ") " + "\"" + "[dir=both];");
                                     escribir.println("}");
                                 }
                                 temp = temp.getSiguiente();
@@ -521,81 +475,39 @@ public class MatrizAd {
     }
 
     public NodoMatrizAd buscarMatriz(int x, int y) {
-        NodoMatrizAd aux_columna = null;
-        NodoMatrizAd aux_Fila = null;
-        //NodoMatrizAd auxRaiz;
-        aux_columna = this.raiz;
-        //auxRaiz=aux->frente;
-        boolean condicion = true;
-        while (condicion) {
-            while (aux_columna != null) {
-                /*if (aux_columna.abajo != null) {
-                        aux_columna = aux_columna.getAbajo();
-                    } else {
-                        break;
-                    }
-                    if (aux_columna.getSiguiente() != null) {
-                        aux_Fila = aux_columna.getSiguiente();
-                    } else {
-                        break;
-                    }*/
-                aux_Fila = aux_columna;
-                //aux1=aux;
-                while (aux_Fila != null) {
-                    //cout << aux1->dato<<" ";
-                    /*              aux_Fila = aux_Fila.getSiguiente();
-                    if(aux_Fila.getSiguiente()!=null){
-                        escribir.println("\"" + (aux_Fila.getNombre()) + "\"->\"" + (aux_Fila.getSiguiente().getNombre()) +  "\""+"[dir=both];");
-                    }
-                    if(aux_Fila.getAbajo()!=null){
-                        escribir.println("\"" + (aux_Fila.getNombre()) + "\"->\"" + (aux_Fila.getAbajo().getNombre()) +  "\""+"[dir=both];");
-                    }*/
-                    //System.out.println(aux_Fila.getArbol() + " " + String.valueOf(aux_Fila.getX()) + " " + String.valueOf(aux_Fila.getY()));
-                    if ((aux_Fila.x == x) && (aux_Fila.y == y)) {
-                        condicion = false;
-                        break;
-
-                    }
-                    aux_Fila = aux_Fila.getSiguiente();
+        this.recorrerMatriz();
+        NodoMatrizAd aux = this.raiz;
+        int c = 1;
+        while (aux!=null) {
+            NodoMatrizAd aux1 = aux;
+            while (aux1!=null){
+                if(aux1.getY()==-1 || aux1.getX() == -1){
+                    aux1 = aux1.getSiguiente();
+                    continue;
                 }
-                /*System.out.println("------------------------------");
-                    System.out.println(aux_columna.getArbol());
-                    System.out.println("---------------------------------");
-                    System.out.println(aux_columna.getX());
-                    System.out.println("----------------");
-                    System.out.println(aux_columna.getY());*/
-                if (aux_columna.getAbajo() != null) {
-                    aux_columna = aux_columna.getAbajo();
-                } else {
-                    break;
+                if(aux1.getX()==x && aux1.getY()==y){
+                  return aux1;  
+                //System.out.println(aux1.getX() +"," + aux1.getY() + " : " +  aux1.getArbolAVL().getNombre());    
                 }
-
-                // aux = aux->abajo;
-                //cout<<""<<endl;
+                
+                aux1 = aux1.getSiguiente();
+                c++;
             }
-            //aux=auxRaiz;
-            //System.out.println("Salio del primer while");
-            if (aux_columna.getAbajo() == null) {
-                System.out.println("   ENTRO EN LA COLUMNA NULA");
-                //aux= aux->frente;
-                //auxRaiz=auxRaiz->frente;
-                condicion = false;
-                break;
-            }//else
-            //{
-            //  condicion= false;
-            //break;
-            //}
+            aux = aux.getAbajo();
         }
-
-        return aux_Fila;
+        return null;
     }
 
     public void insertarInterseccion(String padre, String hijo) {
+        
         NodoMatrizAd aux_columna;
         NodoMatrizAd aux_Fila;
         NodoMatrizAd tempPrimero = this.raiz;
-
+        int HijoX=0;
+        int HijoY=0;
+        int PadreX=0;
+        int PadreY=0;
+        
         aux_columna = tempPrimero;
         aux_Fila = this.raiz;
 
@@ -604,29 +516,33 @@ public class MatrizAd {
             if (aux_columna.siguiente != null) {
                 aux_columna = aux_columna.siguiente;
                 while (aux_columna != null) {
-                    if (aux_columna.nombre.equals(padre)) {
+                    
+                    if (aux_columna.arbol.getName().equals(padre)) {
                         
-                        break;
+                        PadreX=aux_columna.getX();
+                        PadreY=aux_columna.getY();
+                        //break;
                     }
                     aux_columna = aux_columna.abajo;
                 }
-
-            }
+            }        
         }
         
         if(aux_Fila.abajo!=null){
             aux_Fila = aux_Fila.abajo;
             if(aux_Fila.siguiente!=null){
                 while(aux_Fila!=null){
-                    if(aux_Fila.nombre.equals(hijo)){
-                        break;
+                    if(aux_Fila.arbol.getName().equals(hijo)){
+                        HijoX = aux_Fila.getX();
+                        HijoY = aux_Fila.getY();
+                        //break;
                     }
                   aux_Fila=aux_Fila.siguiente;  
                 }
                 
             }
         }
-        this.insertarElemento(aux_Fila.x,aux_Fila.y, new ArbolAVL2(hijo));
+        this.insertarElemento(HijoX,PadreY, new ArbolAVL2(hijo));
 
     }
 
@@ -694,10 +610,11 @@ public class MatrizAd {
             //}
         }*/
             escribir.println("}");
-
+            int numero=0;
+            numero = (int) (Math.random() * 1000000000) + 1;
             escribir.close();
             ProcessBuilder abrir;
-            String rutaImagen = punto.getAbsolutePath() + "//" + "MatrizImagen.jpg";
+            String rutaImagen = punto.getAbsolutePath() + "//" + "MatrizImagen"+String.valueOf(numero)+".jpg";
             String rutaDot = punto.getAbsolutePath() + "//" + "Matriz.dot";
             abrir = new ProcessBuilder("dot", "-Tjpg", "-o", rutaImagen, rutaDot);
 
