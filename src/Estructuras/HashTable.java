@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
 public class HashTable {
@@ -16,6 +17,9 @@ public class HashTable {
     int objeto=0;
     int tamanio;
     public static int usuariosIngresadoExito;
+    public static LinkedList<String>usuarioError= new LinkedList<>();
+    public static LinkedList<String>contraError= new LinkedList<>();
+    public static LinkedList<String>comentarioError= new LinkedList<>();
 
     public String getNombre() {
         return nombre;
@@ -179,9 +183,15 @@ public class HashTable {
         }else{
             
             JOptionPane.showMessageDialog(null, "Usuario ya existe");
+            usuarioError.add(usuario.getNickname());
+            contraError.add(usuario.getContrasenia());
+            comentarioError.add("Usuario Ya existe");
         }
         }else{
             JOptionPane.showMessageDialog(null, "Contraseña es menor de 8");
+            usuarioError.add(usuario.getNickname());
+            contraError.add(usuario.getContrasenia());
+            comentarioError.add("La contraseña no posee al menos 8 caracteres");
         }
 
     }

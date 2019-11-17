@@ -28,6 +28,7 @@ public class CargaUsuario extends javax.swing.JFrame {
     JFileChooser seleccionararchivo = new JFileChooser();
     File archivo;
     public CargaUsuario() {
+        super("Carga de Usuarios");
         initComponents();
         
         
@@ -126,6 +127,9 @@ public class CargaUsuario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        tabla.comentarioError.clear();
+        tabla.contraError.clear();
+        tabla.usuarioError.clear();
         tabla.usuariosIngresadoExito=0;
         seleccionararchivo.setFileFilter(new FileNameExtensionFilter("todos los archivos *.csv", "csv", "CSV"));
                 int abrir = seleccionararchivo.showDialog(null, "Abrir");
@@ -140,6 +144,8 @@ public class CargaUsuario extends javax.swing.JFrame {
                     }
                 }
         txtUsuariosE.setText(String.valueOf(tabla.usuariosIngresadoExito));
+        VentanaUsuarioError uError= new VentanaUsuarioError();
+        uError.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
     public void leer_archivo(File archivo2) {
