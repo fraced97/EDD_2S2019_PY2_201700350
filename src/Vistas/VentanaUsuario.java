@@ -6,6 +6,7 @@
 package Vistas;
 
 import Estructuras.ArbolAVL2;
+import Estructuras.Archivo;
 import Estructuras.MatrizAd.NodoMatrizAd;
 import static Vistas.Login.usuarioActual;
 import java.awt.Component;
@@ -13,6 +14,7 @@ import java.awt.Image;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -27,14 +29,14 @@ public final class VentanaUsuario extends javax.swing.JFrame {
     /**
      * Creates new form VentanaUsuario
      */
-                NodoMatrizAd interseccion;
+                NodoMatrizAd nodoEnComunMatriz;
         NodoMatrizAd antes;
                 NodoMatrizAd father;
-                NodoMatrizAd rutaActual;
-    
+            NodoMatrizAd rutaActual;
+            
     public VentanaUsuario() {
         initComponents();
-        interseccion = null;
+        nodoEnComunMatriz = null;
         father=usuarioActual.getMatriz().buscarMatriz(0, 1);
         
         System.out.println(father.getArbol().getRuta());
@@ -52,6 +54,7 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         jList3.updateUI();*/
         labelRuta.setText(father.getArbol().getRuta());
         Carpetas();
+        Archivos();
         
     }
     
@@ -111,6 +114,9 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         jList3 = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
         regresar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -167,6 +173,11 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         btEliminarA.setBounds(20, 100, 210, 30);
 
         jButton8.setText("Graficar");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton8);
         jButton8.setBounds(20, 140, 210, 30);
 
@@ -194,6 +205,11 @@ public final class VentanaUsuario extends javax.swing.JFrame {
 
         jButton2.setText("Abrir Archivo");
 
+        jList3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList3MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jList3);
 
         jButton1.setText("Salir");
@@ -210,6 +226,12 @@ public final class VentanaUsuario extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Nombre");
+
+        jLabel5.setText("Contenido");
+
+        jLabel6.setText("Fecha y hora");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -217,59 +239,91 @@ public final class VentanaUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(labelRuta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(abrirC, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(20, 20, 20)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(29, 29, 29)
+                                        .addComponent(jButton1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(abrirC, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addComponent(jButton1))
-                    .addComponent(jScrollPane2)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(labelRuta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(26, 26, 26))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addContainerGap())))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(abrirC)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButton2)
-                                .addComponent(jButton1)
-                                .addComponent(regresar)))
-                        .addGap(7, 7, 7)
-                        .addComponent(labelRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(abrirC)
+                            .addComponent(jButton2)
+                            .addComponent(regresar)
+                            .addComponent(jButton1))
+                        .addGap(7, 7, 7)
+                        .addComponent(labelRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -304,22 +358,25 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
                 NodoMatrizAd aux = this.father.getSiguiente();
                     NodoMatrizAd fatherAux;
-                int carpetaSeleccionada = jList1.getSelectedIndex();
+                        int carpetaSeleccionada = jList1.getSelectedIndex();
                 for(int i=0; i<carpetaSeleccionada;i++){
                     aux = aux.getSiguiente();
                 }
                     fatherAux=usuarioActual.getMatriz().buscarMatriz(0, aux.getY());
                 String carpetaAbrir = aux.getArbol().getRuta();
-            while(true){
+                this.nodoEnComunMatriz=aux;
+          while(true){
              if(fatherAux.getArbol().getRuta().equals(carpetaAbrir)){
-                 father = fatherAux;
+                         father = fatherAux;
                  break;
-             }else{
+                    }else{
                  fatherAux = fatherAux.getAbajo();
              }
          }
+                this.Archivos();
             this.Carpetas();
-            labelRuta.setText(fatherAux.getArbol().getRuta());
+          labelRuta.setText(fatherAux.getArbol().getRuta());
+            
             //rutaActual =aux;
     }//GEN-LAST:event_abrirCActionPerformed
 
@@ -376,36 +433,106 @@ public final class VentanaUsuario extends javax.swing.JFrame {
             }
        // }
         
-        Carpetas();
+        
         if(rutaActual2.getY()!=1){
             NodoMatrizAd auxRuta3=rutaAux.getSiguiente();
+            if(auxRuta3.getArbol().getNombre().equals("Inicio")){
+                this.nodoEnComunMatriz=null;
+            }else{
+                
+                NodoMatrizAd auxRuta4=usuarioActual.getMatriz().buscarMatriz(auxRuta3.getY(), 0);
+                this.nodoEnComunMatriz=auxRuta4.getAbajo();
+                
+            }
+            
             labelRuta.setText(auxRuta3.getArbol().getRuta());
         }
+        Carpetas();
+        //System.out.println("lo logre");
+        Archivos();
         
         
-        /*if(rutaActual2.getAnterior()!=null){
-            String carpetaAbrir = rutaActual2.getArbol().getRuta();
-             while(true){
-             if(fatherAux.getArbol().getRuta().equals(carpetaAbrir)){
-                 father = fatherAux;
-                 break;
-             }else{
-                 fatherAux = fatherAux.getAbajo();
-             }
-         }
-            
-            System.out.println("FUNCIONO EL BOTON REGRESAR");
-        }
-        Carpetas();*/
+       
         
         
     }//GEN-LAST:event_regresarActionPerformed
 
     private void crearArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearArchivosActionPerformed
         // TODO add your handling code here:
+                    String name = JOptionPane.showInputDialog(this, "Escriba el nombre del Archivo");
+                    String contenido = JOptionPane.showInputDialog(this, "Escriba el contenido");
+                if(nodoEnComunMatriz==null){
+                        NodoMatrizAd aux =usuarioActual.getMatriz().buscarMatriz(father.getX(), father.getY());
+                   usuarioActual.getMatriz().buscarMatriz(aux.getX(), aux.getY()).getArbol().insertar(new Archivo(name,contenido));
+                    }else{
+                        NodoMatrizAd aux =usuarioActual.getMatriz().buscarMatriz(nodoEnComunMatriz.getX(), nodoEnComunMatriz.getY());
+                   usuarioActual.getMatriz().buscarMatriz(aux.getX(), aux.getY()).getArbol().insertar(new Archivo(name,contenido));
+                    }
+                Archivos();
+                
+                    
+        
+        
         
     }//GEN-LAST:event_crearArchivosActionPerformed
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+                if(nodoEnComunMatriz!=null){
+            
+            nodoEnComunMatriz.getArbol().graficarArbol();
+           
+            
+                 }else{
+           
+             this.father.getArbol().graficarArbol();
+        
+             }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jList3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList3MouseClicked
+        // TODO add your handling code here:
+                    try{
+                    Archivo archivo;
+            if(nodoEnComunMatriz == null){
+            NodoMatrizAd temp;
+            temp= this.father;
+            temp.getArbol().inorden2();
+            archivo = temp.getArbol().getArchivosList().get(this.jList3.getSelectedIndex());
+                                    }else{
+            NodoMatrizAd temp = this.nodoEnComunMatriz;
+            temp.getArbol().inorden2();
+            archivo = temp.getArbol().getArchivosList().get(this.jList3.getSelectedIndex());            
+                                    }
+        
+                    this.jLabel5.setText(archivo.getAdentro());
+               this.jLabel6.setText(archivo.getFechaHora());
+        this.jLabel3.setText(archivo.getNombre());
+                    
+            
+                    }catch(ArrayIndexOutOfBoundsException r){
+            
+                    }
+    }//GEN-LAST:event_jList3MouseClicked
+
+    public void Archivos(){
+                    NodoMatrizAd aux;
+                if(this.nodoEnComunMatriz==null){
+            aux = this.father;
+                }else{
+                    aux = this.nodoEnComunMatriz;
+                }
+                DefaultListModel dlm = new DefaultListModel();
+                aux.getArbol().inorden2();
+                for(Archivo a: aux.getArbol().getArchivosList() ){
+             
+             dlm.addElement(new ListEntry(a.getNombre(), new ImageIcon("archivo2.png")));
+             
+                    }
+            jList3.setModel(dlm);
+                jList3.setCellRenderer(new ListEntryCellRenderer());
+                        jList3.updateUI();
+    }
     /**
      * @param args the command line arguments
      */
@@ -511,7 +638,10 @@ class ListEntryCellRenderer
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     public javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList3;
     private javax.swing.JPanel jPanel2;

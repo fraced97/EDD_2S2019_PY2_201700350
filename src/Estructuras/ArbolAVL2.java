@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.PrintWriter;
 import Vistas.ScrollPaneReport;
 import Vistas.VentanaReporte;
+import Vistas.VentanaReporte3;
+import java.util.ArrayList;
 /**
  *
  * @author USUARIO
@@ -111,7 +113,25 @@ public class ArbolAVL2 {
     }
     String ruta;
     String nombre;
+
+    public String getRuta3() {
+        return ruta3;
+    }
+
+    public void setRuta3(String ruta3) {
+        this.ruta3 = ruta3;
+    }
+    String ruta3;
+    ArrayList<Archivo> archivosList;
     //String nombreArchivo;
+
+    public ArrayList<Archivo> getArchivosList() {
+        return archivosList;
+    }
+
+    public void setArchivosList(ArrayList<Archivo> archivosList) {
+        this.archivosList = archivosList;
+    }
 
     public ArbolAVL2(String nombreCarpeta, String nombreOriginal) {
         raiz = null;
@@ -265,6 +285,33 @@ public class ArbolAVL2 {
 
         }
     }
+    public void inorden2(){
+        this.setArchivosList(new ArrayList<>());
+        innorden4(this.raiz);
+        
+    }
+    
+    public void innorden4(Nodo aux){
+        if(aux!=null){
+            innorden4(aux.getHojaIzquierda());
+            this.getArchivosList().add(aux.getArchivo());
+            innorden4(aux.getHojaDerecha());
+            
+        }
+    }
+    public void PostOrder2(){
+        this.setArchivosList(new ArrayList<>());
+        PostOrder4(this.raiz);
+    }
+    public void PostOrder4(Nodo aux){
+        if(aux!=null){
+            innorden4(aux.getHojaIzquierda());
+            
+            innorden4(aux.getHojaDerecha());
+            this.getArchivosList().add(aux.getArchivo());
+            
+        }
+    }
 
     public void graficarArbol2(Nodo raiz7,PrintWriter escribir){
         if (raiz7 !=null) {
@@ -305,9 +352,10 @@ public class ArbolAVL2 {
 
             escribir.close();
                     
-
+            int numero=0;
+            numero = (int) (Math.random() * 1000000000) + 1;
             ProcessBuilder abrir;
-            String rutaImagen=punto.getAbsolutePath()+"//"+"ArbolAvlImagen.jpg";
+            String rutaImagen=punto.getAbsolutePath()+"//"+"ArbolAvlImagen"+String.valueOf(numero)+".jpg";
             String rutaDot= punto.getAbsolutePath()+"//"+"ArbolAvl.dot";
             abrir = new ProcessBuilder("dot", "-Tjpg", "-o",rutaImagen,rutaDot);
             
@@ -318,8 +366,8 @@ public class ArbolAVL2 {
             abrir.start();
             ///////////////////////////// Creo una ventana nueva con la imagen 
             //ScrollPaneReport temporal3= new ScrollPaneReport(rutaImagen);
-            VentanaReporte temporal4 = new VentanaReporte(rutaImagen);
-            temporal4.abrirVentana(rutaImagen);
+            VentanaReporte3 temporal4 = new VentanaReporte3(rutaImagen);
+            //temporal4.abrirVentana(rutaImagen);
             
             ////////////////////////////////////////////////////////////
             

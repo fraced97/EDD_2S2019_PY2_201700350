@@ -5,21 +5,26 @@
  */
 package Estructuras;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author USUARIO
  */
 public class Archivo {
     String fechaHora;
-    String ruta,nombre,adentro;
+    String ruta,nombre,adentro,contenido;
     //String nombre;
     //String adentro;
+   
 
-    public Archivo(String fechaHora, String ruta, String nombre, String adentro) {
-        this.fechaHora = fechaHora;
-        this.ruta = ruta;
+    public Archivo(String nombre, String contenido) {
+        //this.fechaHora = fechaHora;
+        //this.ruta = ruta;
         this.nombre = nombre;
-        this.adentro = adentro;
+        this.adentro = contenido;
+        fechaHora=LocalDateTime.now().toString();
+        
     }
 
     public String getFechaHora() {
