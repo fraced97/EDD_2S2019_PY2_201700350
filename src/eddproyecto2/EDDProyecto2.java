@@ -21,7 +21,7 @@ public class EDDProyecto2 {
     
     public static void main(String[] args) {
         tabla = new HashTable(); 
-        tabla.insertar(new Usuario("Fredy","hola"));
+        /*tabla.insertar(new Usuario("Fredy","hola"));
          tabla.insertar(new Usuario("Jesus","hola"));
          tabla.insertar(new Usuario("Eli","hola"));
          tabla.insertar(new Usuario("Karen","hola"));
@@ -35,7 +35,7 @@ public class EDDProyecto2 {
          tabla.insertar(new Usuario("Milton","hola"));
          tabla.insertar(new Usuario("ys","hola"));
          tabla.insertar(new Usuario("gerardo","hola"));
-         tabla.insertar(new Usuario("Cris","hola"));
+         tabla.insertar(new Usuario("Cris","hola"));*/
          
          
          Login login = new Login();

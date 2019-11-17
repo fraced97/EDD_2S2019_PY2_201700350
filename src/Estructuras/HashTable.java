@@ -15,6 +15,7 @@ public class HashTable {
     private Usuario[] usuario;
     int objeto=0;
     int tamanio;
+    public static int usuariosIngresadoExito;
 
     public String getNombre() {
         return nombre;
@@ -120,23 +121,29 @@ public class HashTable {
         return false;
     }
     public void insertar(Usuario usuario){
+        //int contador=0;
+        if(usuario.getContrasenia().length()>=8){
      if(!buscarUsuarioExiste(usuario.getNickname())){
        int codigo = (usuario.getNickname().hashCode() & 0x7fffffff) % tamanio;
          if (this.usuario[codigo]== null){
+             usuariosIngresadoExito++;
           this.usuario[codigo] = usuario;
        }else{
           if(codigo*codigo > tamanio){
     for(int i=codigo; i< tamanio; i++){
         if (this.usuario[i] == null){
           if (i == this.usuario.length){
+              
                i=0;
                  }
+          usuariosIngresadoExito++;
        this.usuario[i] = usuario;
            break;                      }
              }
                 }else{
           codigo = codigo*codigo;
          if (this.usuario[codigo]== null) {
+             //usuariosIngresadoExito--;
         this.usuario[codigo] = usuario;
          }else{
            while (true){
@@ -146,6 +153,7 @@ public class HashTable {
           int x = 0;
          for(Usuario u:this.usuario){
          if(u==null){
+             //usuariosIngresadoExito--;
           this.usuario[x]=usuario;
                break;
             }
@@ -154,6 +162,7 @@ public class HashTable {
            break;
         }else{
        if(this.usuario[codigo]==null){
+           //usuariosIngresadoExito++;
         this.usuario[codigo] = usuario;
        break;
         }
@@ -168,7 +177,11 @@ public class HashTable {
             this.objeto++;
             ajustarTabla();
         }else{
+            
             JOptionPane.showMessageDialog(null, "Usuario ya existe");
+        }
+        }else{
+            JOptionPane.showMessageDialog(null, "Contraseña es menor de 8");
         }
 
     }

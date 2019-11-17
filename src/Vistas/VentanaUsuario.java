@@ -36,6 +36,7 @@ public final class VentanaUsuario extends javax.swing.JFrame {
             NodoMatrizAd rutaActual;
             
     public VentanaUsuario() {
+        super("Bienvenido "+ usuarioActual.getNickname());
         initComponents();
         nodoEnComunMatriz = null;
         father=usuarioActual.getMatriz().buscarMatriz(0, 1);
@@ -54,6 +55,7 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         jList1.updateUI();
         jList3.updateUI();*/
         labelRuta.setText(father.getArbol().getRuta());
+        labelNombreUsuario.setText(usuarioActual.getNickname());
         Carpetas();
         Archivos();
         
@@ -66,7 +68,7 @@ public final class VentanaUsuario extends javax.swing.JFrame {
        
         while(temp!=null){
             
-            dlm.addElement(new ListEntry(temp.getArbol().getNombre(), new ImageIcon("carpeta2.png")));    
+            dlm.addElement(new entrarLista(temp.getArbol().getNombre(), new ImageIcon("carpeta2.png")));    
             
             temp = temp.getSiguiente();
             
@@ -83,16 +85,16 @@ public final class VentanaUsuario extends javax.swing.JFrame {
                 aux.getArbol().inorden2();
                 for(Archivo a: aux.getArbol().getArchivosList() ){
              
-             dlm.addElement(new ListEntry(a.getNombre(), new ImageIcon("archivo2.png")));
+             dlm.addElement(new entrarLista(a.getNombre(), new ImageIcon("archivo2.png")));
              
                     }
             jList1.setModel(dlm);
-                jList1.setCellRenderer(new ListEntryCellRenderer());
+                jList1.setCellRenderer(new imagenEnLista());
                         jList1.updateUI();
         /////ARCHIVOOOOOAAAA
         //jList1 = new JList(dlm);
         jList1.setModel(dlm);
-        jList1.setCellRenderer(new ListEntryCellRenderer());
+        jList1.setCellRenderer(new imagenEnLista());
         jList1.updateUI();
         
         
@@ -123,7 +125,7 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         labelRuta = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        labelNombreUsuario = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         abrirC = new javax.swing.JButton();
@@ -183,6 +185,11 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         crearArchivos.setBounds(20, 20, 210, 30);
 
         btModificarA.setText("Modificar");
+        btModificarA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btModificarAActionPerformed(evt);
+            }
+        });
         jPanel3.add(btModificarA);
         btModificarA.setBounds(20, 60, 210, 30);
 
@@ -210,7 +217,8 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Carpetas");
 
-        jLabel4.setText("Nombre de Usuario: ");
+        labelNombreUsuario.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        labelNombreUsuario.setText("Admin");
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { };
@@ -231,7 +239,7 @@ public final class VentanaUsuario extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Abrir Archivo");
+        jButton2.setText("Carga Archivos");
 
         jList3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -269,7 +277,7 @@ public final class VentanaUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
@@ -319,7 +327,7 @@ public final class VentanaUsuario extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
@@ -487,14 +495,14 @@ public final class VentanaUsuario extends javax.swing.JFrame {
 
     private void crearArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearArchivosActionPerformed
         // TODO add your handling code here:
-                    String name = JOptionPane.showInputDialog(this, "Escriba el nombre del Archivo");
+                    String name = JOptionPane.showInputDialog("Escriba el nombre del Archivo", ".txt");
                     String contenido = JOptionPane.showInputDialog(this, "Escriba el contenido");
                 if(nodoEnComunMatriz==null){
-                        NodoMatrizAd aux =usuarioActual.getMatriz().buscarMatriz(father.getX(), father.getY());
-                   usuarioActual.getMatriz().buscarMatriz(aux.getX(), aux.getY()).getArbol().insertar(new Archivo(name,contenido));
+                                NodoMatrizAd aux =usuarioActual.getMatriz().buscarMatriz(father.getX(), father.getY());
+           usuarioActual.getMatriz().buscarMatriz(aux.getX(), aux.getY()).getArbol().insertar(new Archivo(name,contenido));
                     }else{
                         NodoMatrizAd aux =usuarioActual.getMatriz().buscarMatriz(nodoEnComunMatriz.getX(), nodoEnComunMatriz.getY());
-                   usuarioActual.getMatriz().buscarMatriz(aux.getX(), aux.getY()).getArbol().insertar(new Archivo(name,contenido));
+               usuarioActual.getMatriz().buscarMatriz(aux.getX(), aux.getY()).getArbol().insertar(new Archivo(name,contenido));
                     }
                 Archivos();
                 Carpetas();
@@ -523,19 +531,19 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
                     try{
                     Archivo archivo;
-            if(nodoEnComunMatriz == null){
-            NodoMatrizAd temp;
+                    if(nodoEnComunMatriz == null){
+                            NodoMatrizAd temp;
             temp= this.father;
-            temp.getArbol().inorden2();
+       temp.getArbol().inorden2();
             archivo = temp.getArbol().getArchivosList().get(this.jList3.getSelectedIndex());
                                     }else{
-            NodoMatrizAd temp = this.nodoEnComunMatriz;
-            temp.getArbol().inorden2();
+      NodoMatrizAd temp = this.nodoEnComunMatriz;
+                     temp.getArbol().inorden2();
             archivo = temp.getArbol().getArchivosList().get(this.jList3.getSelectedIndex());            
                                     }
         
-                    this.jLabel5.setText(archivo.getAdentro());
-               this.jLabel6.setText(archivo.getFechaHora());
+                           this.jLabel5.setText(archivo.getAdentro());
+             this.jLabel6.setText(archivo.getFechaHora());
         this.jLabel3.setText(archivo.getNombre());
                     
             
@@ -556,14 +564,46 @@ public final class VentanaUsuario extends javax.swing.JFrame {
                         Archivo archivo = temp.getArbol().getArchivosList().get(this.jList3.getSelectedIndex());
                                     usuarioActual.getMatriz().buscarMatriz(temp.getX(),temp.getY()).getArbol().eliminarHojaArbol(archivo);
                 }           else{
-         NodoMatrizAd temp = this.father;
+                NodoMatrizAd temp = this.father;
                         temp.getArbol().inorden2();
       Archivo archivo = temp.getArbol().getArchivosList().get(this.jList3.getSelectedIndex());
-                        usuarioActual.getMatriz().buscarMatriz(temp.getX(),temp.getY()).getArbol().eliminarHojaArbol(archivo);
+                                usuarioActual.getMatriz().buscarMatriz(temp.getX(),temp.getY()).getArbol().eliminarHojaArbol(archivo);
  
         }
                          Archivos();
+               Carpetas();
     }//GEN-LAST:event_btEliminarAActionPerformed
+
+    private void btModificarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btModificarAActionPerformed
+        // TODO add your handling code here:
+        String name = JOptionPane.showInputDialog("Modificar, Escriba el nuevo contenido", ".txt");
+                    String contenido = JOptionPane.showInputDialog(this, "Escriba el contenido");
+      if(nodoEnComunMatriz != null){
+                        NodoMatrizAd aux = nodoEnComunMatriz;
+            aux.getArbol().inorden2();
+            Archivo file = aux.getArbol().getArchivosList().get(this.jList3.getSelectedIndex());
+                         Archivo file5 = aux.getArbol().getArchivosList().get(this.jList3.getSelectedIndex());
+                        file5.setAdentro(contenido);
+            file5.setNombre(name);
+                        usuarioActual.getMatriz().buscarMatriz(aux.getX(),aux.getY()).getArbol().eliminarHojaArbol(file);
+                usuarioActual.getMatriz().buscarMatriz(aux.getX(),aux.getY()).getArbol().insertar(file5);
+            
+                        }else{
+        NodoMatrizAd aux4 = father;
+            aux4.getArbol().inorden2();
+                    Archivo file = aux4.getArbol().getArchivosList().get(this.jList3.getSelectedIndex());
+        Archivo file6 = aux4.getArbol().getArchivosList().get(this.jList3.getSelectedIndex());
+            usuarioActual.getMatriz().buscarMatriz(aux4.getX(),aux4.getY()).getArbol().eliminarHojaArbol(file);
+                        file6.setAdentro(contenido);
+            file6.setNombre(name);
+                        usuarioActual.getMatriz().buscarMatriz(aux4.getX(),aux4.getY()).getArbol().insertar(file6);
+            
+        }
+        Archivos();
+        Carpetas();
+        
+        
+    }//GEN-LAST:event_btModificarAActionPerformed
 
     public void Archivos(){
                     NodoMatrizAd aux;
@@ -576,11 +616,11 @@ public final class VentanaUsuario extends javax.swing.JFrame {
                 aux.getArbol().inorden2();
                 for(Archivo a: aux.getArbol().getArchivosList() ){
              
-             dlm.addElement(new ListEntry(a.getNombre(), new ImageIcon("archivo2.png")));
+             dlm.addElement(new entrarLista(a.getNombre(), new ImageIcon("archivo2.png")));
              
                     }
             jList3.setModel(dlm);
-                jList3.setCellRenderer(new ListEntryCellRenderer());
+                jList3.setCellRenderer(new imagenEnLista());
                         jList3.updateUI();
     }
     /**
@@ -620,12 +660,12 @@ public final class VentanaUsuario extends javax.swing.JFrame {
 
     
   
-class ListEntry
+class entrarLista
 {
    private String value;
    private ImageIcon icon;
   
-   public ListEntry(String value, ImageIcon icon) {
+   public entrarLista(String value, ImageIcon icon) {
       this.value = value;
       this.icon = icon;
    }
@@ -641,37 +681,35 @@ class ListEntry
    public String toString() {
       return value;
    }
-}
+    }
   
-class ListEntryCellRenderer
+class imagenEnLista
  extends JLabel implements ListCellRenderer
 {
    private JLabel label;
   
-   public Component getListCellRendererComponent(JList list, Object value,
-                                                 int index, boolean isSelected,
-                                                 boolean cellHasFocus) {
-      ListEntry entry = (ListEntry) value;
+   public Component getListCellRendererComponent(JList list, Object value,  int index, boolean isSelected,  boolean cellHasFocus) {
+                entrarLista entry = (entrarLista) value;
   
       setText(value.toString());
-      setIcon(entry.getIcon());
+                setIcon(entry.getIcon());
    
-      if (isSelected) {
+            if (isSelected) {
          setBackground(list.getSelectionBackground());
          setForeground(list.getSelectionForeground());
-      }
-      else {
+                    }
+                else {
          setBackground(list.getBackground());
          setForeground(list.getForeground());
-      }
+                }
   
-      setEnabled(list.isEnabled());
-      setFont(list.getFont());
-      setOpaque(true);
+                setEnabled(list.isEnabled());
+            setFont(list.getFont());
+                            setOpaque(true);
   
-      return this;
+                        return this;
    }
-}
+    }
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -689,7 +727,6 @@ class ListEntryCellRenderer
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     public javax.swing.JList<String> jList1;
@@ -699,6 +736,7 @@ class ListEntryCellRenderer
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelNombreUsuario;
     private javax.swing.JLabel labelRuta;
     private javax.swing.JButton regresar;
     // End of variables declaration//GEN-END:variables

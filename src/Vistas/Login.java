@@ -19,6 +19,7 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
+        super("LOGIN");
         initComponents();
     }
 
@@ -109,6 +110,10 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        Registrarse registrar= new Registrarse();
+        registrar.setVisible(true);
+        this.dispose();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraActionPerformed
@@ -123,7 +128,10 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         boolean condicion=true;
         if(txtNombre.getText().equalsIgnoreCase("Admin")&&txtContra.getText().equalsIgnoreCase("Admin")){
-            System.out.println("admin");
+            //System.out.println("admin");
+            VentanaAdmin ventana= new VentanaAdmin();
+            ventana.setVisible(true);
+            this.dispose();
         }else{
             for(Usuario u: EDDProyecto2.tabla.getUsuario()){
             if(u!=null){

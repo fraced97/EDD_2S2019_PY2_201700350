@@ -5,6 +5,10 @@
  */
 package Vistas;
 
+import Estructuras.Usuario;
+import static eddproyecto2.EDDProyecto2.tabla;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author USUARIO
@@ -15,6 +19,7 @@ public class Registrarse extends javax.swing.JFrame {
      * Creates new form Registrarse
      */
     public Registrarse() {
+        super("REGISTRO DE USUARIOS");
         initComponents();
     }
 
@@ -37,7 +42,6 @@ public class Registrarse extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(null);
 
@@ -49,6 +53,11 @@ public class Registrarse extends javax.swing.JFrame {
         jTextField1.setBounds(130, 140, 300, 40);
 
         jButton1.setText("Registrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1);
         jButton1.setBounds(110, 310, 130, 50);
 
@@ -77,14 +86,41 @@ public class Registrarse extends javax.swing.JFrame {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(20, 240, 80, 20);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 561, 394));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        Login login = new Login();
+        login.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int variable;
+        variable = jTextField3.getText().length();
+        if(variable<8){
+            JOptionPane.showMessageDialog(null, "Ingrese una contraseña de al menos 8 caracteres");
+        }else{
+            tabla.insertar(new Usuario(jTextField1.getText(),jTextField3.getText()));
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:

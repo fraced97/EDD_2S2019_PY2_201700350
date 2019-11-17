@@ -11,6 +11,7 @@ import Vistas.ScrollPaneReport;
 import Vistas.VentanaReporte;
 import Vistas.VentanaReporte3;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 /**
  *
  * @author USUARIO
@@ -262,13 +263,31 @@ public class ArbolAVL2 {
         
     }
 
-    public void insertar(Archivo dato) {
+    public ArbolAVL2 insertar(Archivo dato) {
+        
         Nodo nuevo = new Nodo(dato);
+        this.inorden2();
+        
+        boolean bandera = false;
+        
+        for(Archivo a: this.getArchivosList()){
+            if(a.getNombre().equals(dato.getNombre())){
+                int reply = JOptionPane.showConfirmDialog(null, "Nombre de Archivo ya existente, desea continuar?", "Este Nombre Ya Existe", JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION) {
+                    this.eliminarHojaArbol(dato);
+                    this.insertar(dato);
+                }
+            }
+        }
+        
+        
+        //Nodo nuevo = new Nodo(dato);
         if (raiz == null) {
             raiz = nuevo;
         } else {
             raiz = insertarAvl(nuevo, raiz);
         }
+                    return this;
     }
 
     public void preorden(Nodo aux) {
