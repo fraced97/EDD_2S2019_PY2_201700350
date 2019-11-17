@@ -24,6 +24,20 @@ public class EDDProyecto2 {
         tabla.insertar(new Usuario("Fredy","hola"));
          tabla.insertar(new Usuario("Jesus","hola"));
          tabla.insertar(new Usuario("Eli","hola"));
+         tabla.insertar(new Usuario("Karen","hola"));
+         tabla.insertar(new Usuario("Ricardo","hola"));
+         tabla.insertar(new Usuario("Manuel","hola"));
+         tabla.insertar(new Usuario("Brandon","hola"));
+         tabla.insertar(new Usuario("Jose","hola"));
+         tabla.insertar(new Usuario("Gar","hola"));
+         tabla.insertar(new Usuario("Bob","hola"));
+         tabla.insertar(new Usuario("Mario","hola"));
+         tabla.insertar(new Usuario("Milton","hola"));
+         tabla.insertar(new Usuario("ys","hola"));
+         tabla.insertar(new Usuario("gerardo","hola"));
+         tabla.insertar(new Usuario("Cris","hola"));
+         
+         
          Login login = new Login();
          login.setVisible(true);
         // TODO code application logic here

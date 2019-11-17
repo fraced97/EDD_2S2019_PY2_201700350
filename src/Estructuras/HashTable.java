@@ -1,6 +1,7 @@
 
 package Estructuras;
 
+import Vistas.VentanaReporte3;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -14,6 +15,39 @@ public class HashTable {
     private Usuario[] usuario;
     int objeto=0;
     int tamanio;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    String nombre;
+
+    public int getObjeto() {
+        return objeto;
+    }
+
+    public void setObjeto(int objeto) {
+        this.objeto = objeto;
+    }
+
+    public int getTamanio() {
+        return tamanio;
+    }
+
+    public void setTamanio(int tamanio) {
+        this.tamanio = tamanio;
+    }
+
+    public String getNombreArchivo() {
+        return nombreArchivo;
+    }
+
+    public void setNombreArchivo(String nombreArchivo) {
+        this.nombreArchivo = nombreArchivo;
+    }
     String nombreArchivo;
 
     public HashTable() {
@@ -44,7 +78,7 @@ public class HashTable {
       }
     }
  public void ajustarTabla(){
-        if(objeto > tamanio*0.75){
+               if(objeto > tamanio*0.75){
       objeto = 0;
          Usuario[] temp= usuario;
       generarPrimo();
@@ -107,6 +141,7 @@ public class HashTable {
          }else{
            while (true){
        codigo=codigo*codigo;
+       codigo=codigo+1;
         if(codigo>this.tamanio){
           int x = 0;
          for(Usuario u:this.usuario){
@@ -138,14 +173,15 @@ public class HashTable {
 
     }
 public void graficar(){
-    FileWriter fichero = null;
+    //FileWriter fichero = null;
         PrintWriter pw = null;
         try {
 
-        File miDir = new File (".");
+        File punto = new File (".");
         //fileName = new SimpleDateFormat("yyyyMMddHHmmss''").format(new Date());
-        fichero = new FileWriter(miDir.getAbsolutePath() + "//" +"TablaHash" + ".txt");
-        pw = new PrintWriter(fichero);
+        //fichero = new FileWriter(punto.getAbsolutePath() + "//" +"TablaHash" + ".txt");
+        
+        pw = new PrintWriter(punto.getAbsolutePath() + "//" + "HashTable.dot", "UTF-8");
 
 
             pw.println("digraph test {\n" +
@@ -154,9 +190,9 @@ public void graficar(){
                     "    arset [label=<\n" +
                     "        <TABLE ALIGN=\"LEFT\">\n" +
                     "            <TR>\n" +
-                    "                <TD>INDEX</TD>\n" +
-                    "                <TD>USER</TD>\n" +
-                    "\t      <TD>PASSWOR</TD>\n" +
+                    "                <TD>Indice</TD>\n" +
+                    "                <TD>Usuario</TD>\n" +
+                    "\t      <TD>Contraseña</TD>\n" +
                     "            </TR>");
 
             int count = 0;
@@ -193,19 +229,29 @@ public void graficar(){
             pw.println(" </TABLE>\n" +
                     "    >, ];\n" +
                     "}");
+            
+            pw.close();
+            int numero=0;
+            numero = (int) (Math.random() * 1000000000) + 1;
+            ProcessBuilder abrir;
+            String rutaImagen = punto.getAbsolutePath() + "//" + "HashTableImagen"+String.valueOf(numero)+".jpg";
+            String rutaDot = punto.getAbsolutePath() + "//" + "HashTable.dot";
+            abrir = new ProcessBuilder("dot", "-Tjpg", "-o", rutaImagen, rutaDot);
 
+            abrir.redirectErrorStream(true);
+            abrir.start();
+          
+            VentanaReporte3 temporal4 = new VentanaReporte3(rutaImagen);
 
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
                 try {
-                    // Nuevamente aprovechamos el finally para
-                    // asegurarnos que se cierra el fichero.
-                    if (null != fichero)
-                        fichero.close();
+  
                 } catch (Exception e2) {
                     e2.printStackTrace();
                 }
+                
             }
             //Llamar a la funcion que sacara la grafica del codigo ejecutado
             //creacionDibujo(fileName);

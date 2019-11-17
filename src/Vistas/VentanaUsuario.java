@@ -9,6 +9,7 @@ import Estructuras.ArbolAVL2;
 import Estructuras.Archivo;
 import Estructuras.MatrizAd.NodoMatrizAd;
 import static Vistas.Login.usuarioActual;
+import static eddproyecto2.EDDProyecto2.tabla;
 import java.awt.Component;
 import java.awt.Image;
 import javax.swing.DefaultListModel;
@@ -71,7 +72,24 @@ public final class VentanaUsuario extends javax.swing.JFrame {
             
             
         }
-        
+        //////ARCHIVOS
+         NodoMatrizAd aux;
+                if(this.nodoEnComunMatriz==null){
+            aux = this.father;
+                }else{
+                    aux = this.nodoEnComunMatriz;
+                }
+                //DefaultListModel dlm = new DefaultListModel();
+                aux.getArbol().inorden2();
+                for(Archivo a: aux.getArbol().getArchivosList() ){
+             
+             dlm.addElement(new ListEntry(a.getNombre(), new ImageIcon("archivo2.png")));
+             
+                    }
+            jList1.setModel(dlm);
+                jList1.setCellRenderer(new ListEntryCellRenderer());
+                        jList1.updateUI();
+        /////ARCHIVOOOOOAAAA
         //jList1 = new JList(dlm);
         jList1.setModel(dlm);
         jList1.setCellRenderer(new ListEntryCellRenderer());
@@ -169,6 +187,11 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         btModificarA.setBounds(20, 60, 210, 30);
 
         btEliminarA.setText("Eliminar");
+        btEliminarA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarAActionPerformed(evt);
+            }
+        });
         jPanel3.add(btEliminarA);
         btEliminarA.setBounds(20, 100, 210, 30);
 
@@ -193,6 +216,11 @@ public final class VentanaUsuario extends javax.swing.JFrame {
             String[] strings = { };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList1MouseClicked(evt);
+            }
         });
         jScrollPane2.setViewportView(jList1);
 
@@ -248,23 +276,22 @@ public final class VentanaUsuario extends javax.swing.JFrame {
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(labelRuta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
+                                .addComponent(abrirC, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(jButton1)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelRuta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(abrirC, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(20, 20, 20)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(36, 36, 36)
-                                        .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(jButton1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -383,6 +410,7 @@ public final class VentanaUsuario extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         usuarioActual.getMatriz().graficarMatriz();
+        //tabla.graficar();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -469,6 +497,7 @@ public final class VentanaUsuario extends javax.swing.JFrame {
                    usuarioActual.getMatriz().buscarMatriz(aux.getX(), aux.getY()).getArbol().insertar(new Archivo(name,contenido));
                     }
                 Archivos();
+                Carpetas();
                 
                     
         
@@ -514,6 +543,27 @@ public final class VentanaUsuario extends javax.swing.JFrame {
             
                     }
     }//GEN-LAST:event_jList3MouseClicked
+
+    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jList1MouseClicked
+
+    private void btEliminarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarAActionPerformed
+        // TODO add your handling code here:
+                            if(nodoEnComunMatriz != null){
+                     NodoMatrizAd temp = this.nodoEnComunMatriz;
+            temp.getArbol().inorden2();
+                        Archivo archivo = temp.getArbol().getArchivosList().get(this.jList3.getSelectedIndex());
+                                    usuarioActual.getMatriz().buscarMatriz(temp.getX(),temp.getY()).getArbol().eliminarHojaArbol(archivo);
+                }           else{
+         NodoMatrizAd temp = this.father;
+                        temp.getArbol().inorden2();
+      Archivo archivo = temp.getArbol().getArchivosList().get(this.jList3.getSelectedIndex());
+                        usuarioActual.getMatriz().buscarMatriz(temp.getX(),temp.getY()).getArbol().eliminarHojaArbol(archivo);
+ 
+        }
+                         Archivos();
+    }//GEN-LAST:event_btEliminarAActionPerformed
 
     public void Archivos(){
                     NodoMatrizAd aux;

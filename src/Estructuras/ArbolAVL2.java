@@ -247,6 +247,20 @@ public class ArbolAVL2 {
         return nuevoPadre;
 
     }
+    public void eliminarHojaArbol(Archivo archivo){
+                            this.inorden2();
+                    for(Archivo a : this.getArchivosList()){
+                    if(a.getNombre().equals(archivo.getNombre())){
+                this.getArchivosList().remove(a);
+                break;
+            }
+                    }
+                    this.raiz = null;
+                    for(Archivo a: this.getArchivosList()){
+                     this.insertar(a);
+                        }
+        
+    }
 
     public void insertar(Archivo dato) {
         Nodo nuevo = new Nodo(dato);

@@ -7,6 +7,7 @@ package Vistas;
 
 import Estructuras.Usuario;
 import eddproyecto2.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,7 +41,6 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(null);
 
@@ -93,7 +93,16 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(20, 220, 110, 30);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 394));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -112,21 +121,28 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        boolean condicion=true;
         if(txtNombre.getText().equalsIgnoreCase("Admin")&&txtContra.getText().equalsIgnoreCase("Admin")){
             System.out.println("admin");
         }else{
             for(Usuario u: EDDProyecto2.tabla.getUsuario()){
             if(u!=null){
                if(u.getNickname().equals(txtNombre.getText())&&u.getContrasenia().equals(txtContra.getText())){
+                condicion = false;
                 usuarioActual=u;
                 VentanaUsuario vUsuario = new VentanaUsuario();
                 vUsuario.setVisible(true);
                 this.dispose();
                 break;
-            } 
+            }
             }
             
         }
+            if(condicion){
+                
+                   JOptionPane.showMessageDialog(null, "Este Usuario no Existe");
+              
+            }
         }
         
         

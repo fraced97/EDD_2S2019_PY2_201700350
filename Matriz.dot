@@ -2,31 +2,23 @@ digraph G {
 
 node [shape=box, color=cornflowerblue ];
 "Raiz (0, 0) "->"Raiz/ (0, 1) "[dir=both];
-"Raiz/ (0, 1) "->"Raiz/dede/ (0, 2) "[dir=both];
-"Raiz/dede/ (0, 2) "->"Raiz/dede/xxxxx/ (0, 3) "[dir=both];
-"Raiz/dede/xxxxx/ (0, 3) "->"Raiz/dede/xxxxx/qwqwq/ (0, 4) "[dir=both];
-"Raiz/dede/ (2, 0) "->"Raiz/dede/ (2, 1) "[dir=both];
-"Raiz/dede/xxxxx/ (3, 0) "->"Raiz/dede/xxxxx/ (3, 2) "[dir=both];
-"Raiz/dede/xxxxx/qwqwq/ (4, 0) "->"Raiz/dede/xxxxx/qwqwq/ (4, 3) "[dir=both];
+"Raiz/ (0, 1) "->"Raiz/JJAJA/ (0, 2) "[dir=both];
+"Raiz/JJAJA/ (0, 2) "->"Raiz/JJAJA/FEFEFE/ (0, 3) "[dir=both];
+"Raiz/JJAJA/ (2, 0) "->"Raiz/JJAJA/ (2, 1) "[dir=both];
+"Raiz/JJAJA/FEFEFE/ (3, 0) "->"Raiz/JJAJA/FEFEFE/ (3, 2) "[dir=both];
 rank=same{
 "Raiz (0, 0) "->"Raiz/ (1, 0) "[dir=both];
 }
 rank=same{
-"Raiz/ (1, 0) "->"Raiz/dede/ (2, 0) "[dir=both];
+"Raiz/ (1, 0) "->"Raiz/JJAJA/ (2, 0) "[dir=both];
 }
 rank=same{
-"Raiz/dede/ (2, 0) "->"Raiz/dede/xxxxx/ (3, 0) "[dir=both];
+"Raiz/JJAJA/ (2, 0) "->"Raiz/JJAJA/FEFEFE/ (3, 0) "[dir=both];
 }
 rank=same{
-"Raiz/dede/xxxxx/ (3, 0) "->"Raiz/dede/xxxxx/qwqwq/ (4, 0) "[dir=both];
+"Raiz/ (0, 1) "->"Raiz/JJAJA/ (2, 1) "[dir=both];
 }
 rank=same{
-"Raiz/ (0, 1) "->"Raiz/dede/ (2, 1) "[dir=both];
-}
-rank=same{
-"Raiz/dede/ (0, 2) "->"Raiz/dede/xxxxx/ (3, 2) "[dir=both];
-}
-rank=same{
-"Raiz/dede/xxxxx/ (0, 3) "->"Raiz/dede/xxxxx/qwqwq/ (4, 3) "[dir=both];
+"Raiz/JJAJA/ (0, 2) "->"Raiz/JJAJA/FEFEFE/ (3, 2) "[dir=both];
 }
 }
