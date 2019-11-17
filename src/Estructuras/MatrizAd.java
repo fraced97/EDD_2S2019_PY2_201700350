@@ -375,7 +375,8 @@ public class MatrizAd {
                     //cout << aux1->dato<<" ";
                     //if (aux_Fila.getArbol().equals("Raiz")) {
                     if (aux_Fila.getAbajo() != null) {
-                        escribir.println("\"" + (aux_Fila.getArbol().getNombre()) + " (" + aux_Fila.getX() + ", " + aux_Fila.getY() + ") " + "\"->\"" + (aux_Fila.getAbajo().getArbol().getNombre()) + " (" + aux_Fila.getAbajo().getX() + ", " + aux_Fila.getAbajo().getY() + ") " + "\"" + "[dir=both];");
+                        //escribir.println("\"" + (aux_Fila.getArbol().getNombre()) + " (" + aux_Fila.getX() + ", " + aux_Fila.getY() + ") " + "\"->\"" + (aux_Fila.getAbajo().getArbol().getNombre()) + " (" + aux_Fila.getAbajo().getX() + ", " + aux_Fila.getAbajo().getY() + ") " + "\"" + "[dir=both];");
+                        escribir.println("\"" + (aux_Fila.getArbol().getRuta()) + " (" + aux_Fila.getX() + ", " + aux_Fila.getY() + ") " + "\"->\"" + (aux_Fila.getAbajo().getArbol().getRuta()) + " (" + aux_Fila.getAbajo().getX() + ", " + aux_Fila.getAbajo().getY() + ") " + "\"" + "[dir=both];");
                     }
                     //escribir.println("\"" + aux_Fila.getArbol() + ", (" + aux_Fila.getX() + "," + aux_Fila.getY() + ")" + "\"->");
                     if (aux_Fila.getAbajo() != null) {
@@ -391,7 +392,8 @@ public class MatrizAd {
                         while (true) {
                             while (temp != null) {
                                 if (temp.getAbajo() != null) {
-                                    escribir.println("\"" + (temp.getArbol().getNombre()) + " (" + temp.getX() + ", " + temp.getY() + ") " + "\"->\"" + (temp.getAbajo().getArbol().getNombre()) + " (" + temp.getAbajo().getX() + ", " + temp.getAbajo().getY() + ") " + "\"" + "[dir=both];");
+                                    //escribir.println("\"" + (temp.getArbol().getNombre()) + " (" + temp.getX() + ", " + temp.getY() + ") " + "\"->\"" + (temp.getAbajo().getArbol().getNombre()) + " (" + temp.getAbajo().getX() + ", " + temp.getAbajo().getY() + ") " + "\"" + "[dir=both];");
+                                    escribir.println("\"" + (temp.getArbol().getRuta()) + " (" + temp.getX() + ", " + temp.getY() + ") " + "\"->\"" + (temp.getAbajo().getArbol().getRuta()) + " (" + temp.getAbajo().getX() + ", " + temp.getAbajo().getY() + ") " + "\"" + "[dir=both];");
                                 }
                                 temp = temp.getAbajo();
                             }
@@ -409,7 +411,9 @@ public class MatrizAd {
                     if (aux_Fila.getSiguiente() != null) {
                         escribir.println("rank=same{");
                         if (aux_Fila.getSiguiente() != null) {
-                            escribir.println("\"" + (aux_Fila.getArbol().getNombre()) + " (" + aux_Fila.getX() + ", " + aux_Fila.getY() + ") " + "\"->\"" + (aux_Fila.getSiguiente().getArbol().getNombre()) + " (" + aux_Fila.getSiguiente().getX() + ", " + aux_Fila.getSiguiente().getY() + ") " + "\"" + "[dir=both];");
+                            //escribir.println("\"" + (aux_Fila.getArbol().getNombre()) + " (" + aux_Fila.getX() + ", " + aux_Fila.getY() + ") " + "\"->\"" + (aux_Fila.getSiguiente().getArbol().getNombre()) + " (" + aux_Fila.getSiguiente().getX() + ", " + aux_Fila.getSiguiente().getY() + ") " + "\"" + "[dir=both];");
+                            escribir.println("\"" + (aux_Fila.getArbol().getRuta()) + " (" + aux_Fila.getX() + ", " + aux_Fila.getY() + ") " + "\"->\"" + (aux_Fila.getSiguiente().getArbol().getRuta()) + " (" + aux_Fila.getSiguiente().getX() + ", " + aux_Fila.getSiguiente().getY() + ") " + "\"" + "[dir=both];");
+                            
                         }
                         //escribir.println("\"" + aux_Fila.getArbol() + ", (" + aux_Fila.getX() + "," + aux_Fila.getY() + ")" + "\"->");
                         escribir.println("}");
@@ -423,7 +427,8 @@ public class MatrizAd {
                             while (temp != null) {
                                 if (temp.getSiguiente() != null) {
                                     escribir.println("rank=same{");
-                                    escribir.println("\"" + (temp.getArbol().getNombre()) + " (" + temp.getX() + ", " + temp.getY() + ") " + "\"->\"" + (temp.getSiguiente().getArbol().getNombre()) + " (" + temp.getSiguiente().getX() + ", " + temp.getSiguiente().getY() + ") " + "\"" + "[dir=both];");
+                                    //escribir.println("\"" + (temp.getArbol().getNombre()) + " (" + temp.getX() + ", " + temp.getY() + ") " + "\"->\"" + (temp.getSiguiente().getArbol().getNombre()) + " (" + temp.getSiguiente().getX() + ", " + temp.getSiguiente().getY() + ") " + "\"" + "[dir=both];");
+                                    escribir.println("\"" + (temp.getArbol().getRuta()) + " (" + temp.getX() + ", " + temp.getY() + ") " + "\"->\"" + (temp.getSiguiente().getArbol().getRuta()) + " (" + temp.getSiguiente().getX() + ", " + temp.getSiguiente().getY() + ") " + "\"" + "[dir=both];");
                                     escribir.println("}");
                                 }
                                 temp = temp.getSiguiente();

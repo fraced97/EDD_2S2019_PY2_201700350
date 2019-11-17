@@ -1,32 +1,64 @@
 digraph G {
 
 node [shape=box, color=cornflowerblue ];
-"Raiz (0, 0) "->"Inicio (0, 1) "[dir=both];
-"Inicio (0, 1) "->"quepedo (0, 2) "[dir=both];
-"quepedo (0, 2) "->"jaja (0, 3) "[dir=both];
-"jaja (0, 3) "->"hola (0, 4) "[dir=both];
-"quepedo (2, 0) "->"quepedo (2, 1) "[dir=both];
-"jaja (3, 0) "->"jaja (3, 1) "[dir=both];
-"hola (4, 0) "->"hola (4, 2) "[dir=both];
+"Raiz (0, 0) "->"Raiz/ (0, 1) "[dir=both];
+"Raiz/ (0, 1) "->"Raiz/ffff/ (0, 2) "[dir=both];
+"Raiz/ffff/ (0, 2) "->"Raiz/ddddd/ (0, 3) "[dir=both];
+"Raiz/ddddd/ (0, 3) "->"Raiz/ffff/cccc/ (0, 4) "[dir=both];
+"Raiz/ffff/cccc/ (0, 4) "->"Raiz/ffff/xxxx/ (0, 5) "[dir=both];
+"Raiz/ffff/xxxx/ (0, 5) "->"Raiz/ffff/cccc/wwwww/ (0, 6) "[dir=both];
+"Raiz/ffff/cccc/wwwww/ (0, 6) "->"Raiz/ffff/cccc/qqqq/ (0, 7) "[dir=both];
+"Raiz/ffff/cccc/qqqq/ (0, 7) "->"Raiz/ffff/cccc/wwwww/gggg/ (0, 8) "[dir=both];
+"Raiz/ffff/ (2, 0) "->"Raiz/ffff/ (2, 1) "[dir=both];
+"Raiz/ddddd/ (3, 0) "->"Raiz/ddddd/ (3, 1) "[dir=both];
+"Raiz/ffff/cccc/ (4, 0) "->"Raiz/ffff/cccc/ (4, 2) "[dir=both];
+"Raiz/ffff/xxxx/ (5, 0) "->"Raiz/ffff/xxxx/ (5, 2) "[dir=both];
+"Raiz/ffff/cccc/wwwww/ (6, 0) "->"Raiz/ffff/cccc/wwwww/ (6, 4) "[dir=both];
+"Raiz/ffff/cccc/qqqq/ (7, 0) "->"Raiz/ffff/cccc/qqqq/ (7, 4) "[dir=both];
+"Raiz/ffff/cccc/wwwww/gggg/ (8, 0) "->"Raiz/ffff/cccc/wwwww/gggg/ (8, 6) "[dir=both];
 rank=same{
-"Raiz (0, 0) "->"Inicio (1, 0) "[dir=both];
+"Raiz (0, 0) "->"Raiz/ (1, 0) "[dir=both];
 }
 rank=same{
-"Inicio (1, 0) "->"quepedo (2, 0) "[dir=both];
+"Raiz/ (1, 0) "->"Raiz/ffff/ (2, 0) "[dir=both];
 }
 rank=same{
-"quepedo (2, 0) "->"jaja (3, 0) "[dir=both];
+"Raiz/ffff/ (2, 0) "->"Raiz/ddddd/ (3, 0) "[dir=both];
 }
 rank=same{
-"jaja (3, 0) "->"hola (4, 0) "[dir=both];
+"Raiz/ddddd/ (3, 0) "->"Raiz/ffff/cccc/ (4, 0) "[dir=both];
 }
 rank=same{
-"Inicio (0, 1) "->"quepedo (2, 1) "[dir=both];
+"Raiz/ffff/cccc/ (4, 0) "->"Raiz/ffff/xxxx/ (5, 0) "[dir=both];
 }
 rank=same{
-"quepedo (2, 1) "->"jaja (3, 1) "[dir=both];
+"Raiz/ffff/xxxx/ (5, 0) "->"Raiz/ffff/cccc/wwwww/ (6, 0) "[dir=both];
 }
 rank=same{
-"quepedo (0, 2) "->"hola (4, 2) "[dir=both];
+"Raiz/ffff/cccc/wwwww/ (6, 0) "->"Raiz/ffff/cccc/qqqq/ (7, 0) "[dir=both];
+}
+rank=same{
+"Raiz/ffff/cccc/qqqq/ (7, 0) "->"Raiz/ffff/cccc/wwwww/gggg/ (8, 0) "[dir=both];
+}
+rank=same{
+"Raiz/ (0, 1) "->"Raiz/ffff/ (2, 1) "[dir=both];
+}
+rank=same{
+"Raiz/ffff/ (2, 1) "->"Raiz/ddddd/ (3, 1) "[dir=both];
+}
+rank=same{
+"Raiz/ffff/ (0, 2) "->"Raiz/ffff/cccc/ (4, 2) "[dir=both];
+}
+rank=same{
+"Raiz/ffff/cccc/ (4, 2) "->"Raiz/ffff/xxxx/ (5, 2) "[dir=both];
+}
+rank=same{
+"Raiz/ffff/cccc/ (0, 4) "->"Raiz/ffff/cccc/wwwww/ (6, 4) "[dir=both];
+}
+rank=same{
+"Raiz/ffff/cccc/wwwww/ (6, 4) "->"Raiz/ffff/cccc/qqqq/ (7, 4) "[dir=both];
+}
+rank=same{
+"Raiz/ffff/cccc/wwwww/ (0, 6) "->"Raiz/ffff/cccc/wwwww/gggg/ (8, 6) "[dir=both];
 }
 }
