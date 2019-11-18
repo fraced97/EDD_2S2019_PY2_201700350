@@ -1,104 +1,92 @@
 digraph G {
 
 node [shape=box, color=cornflowerblue ];
-"Raiz (0, 0) "->"Raiz/ (0, 1) "[dir=both];
-"Raiz/ (0, 1) "->"Raiz/xxxxx/ (0, 2) "[dir=both];
-"Raiz/xxxxx/ (0, 2) "->"Raiz/ccdcd/ (0, 3) "[dir=both];
-"Raiz/ccdcd/ (0, 3) "->"Raiz/wwww/ (0, 4) "[dir=both];
-"Raiz/wwww/ (0, 4) "->"Raiz/xxxxx/bgbg/ (0, 5) "[dir=both];
-"Raiz/xxxxx/bgbg/ (0, 5) "->"Raiz/xxxxx/qqqq/ (0, 6) "[dir=both];
-"Raiz/xxxxx/qqqq/ (0, 6) "->"Raiz/xxxxx/bgbg/jujuju/ (0, 7) "[dir=both];
-"Raiz/xxxxx/bgbg/jujuju/ (0, 7) "->"Raiz/xxxxx/bgbg/lllll/ (0, 8) "[dir=both];
-"Raiz/xxxxx/bgbg/lllll/ (0, 8) "->"Raiz/xxxxx/bgbg/nnnnn/ (0, 9) "[dir=both];
-"Raiz/xxxxx/bgbg/nnnnn/ (0, 9) "->"Raiz/xxxxx/bgbg/lllll/bbbb/ (0, 10) "[dir=both];
-"Raiz/xxxxx/bgbg/lllll/bbbb/ (0, 10) "->"Raiz/xxxxx/bgbg/lllll/ccccc/ (0, 11) "[dir=both];
-"Raiz/xxxxx/bgbg/lllll/ccccc/ (0, 11) "->"Raiz/xxxxx/bgbg/lllll/ccccc/fgfgfg/ (0, 12) "[dir=both];
-"Raiz/xxxxx/bgbg/lllll/ccccc/fgfgfg/ (0, 12) "->"Raiz/xxxxx/bgbg/lllll/ccccc/fgfgfg/oooooooo/ (0, 13) "[dir=both];
-"Raiz/xxxxx/ (2, 0) "->"Raiz/xxxxx/ (2, 1) "[dir=both];
-"Raiz/ccdcd/ (3, 0) "->"Raiz/ccdcd/ (3, 1) "[dir=both];
-"Raiz/wwww/ (4, 0) "->"Raiz/wwww/ (4, 1) "[dir=both];
-"Raiz/xxxxx/bgbg/ (5, 0) "->"Raiz/xxxxx/bgbg/ (5, 2) "[dir=both];
-"Raiz/xxxxx/qqqq/ (6, 0) "->"Raiz/xxxxx/qqqq/ (6, 2) "[dir=both];
-"Raiz/xxxxx/bgbg/jujuju/ (7, 0) "->"Raiz/xxxxx/bgbg/jujuju/ (7, 5) "[dir=both];
-"Raiz/xxxxx/bgbg/lllll/ (8, 0) "->"Raiz/xxxxx/bgbg/lllll/ (8, 5) "[dir=both];
-"Raiz/xxxxx/bgbg/nnnnn/ (9, 0) "->"Raiz/xxxxx/bgbg/nnnnn/ (9, 5) "[dir=both];
-"Raiz/xxxxx/bgbg/lllll/bbbb/ (10, 0) "->"Raiz/xxxxx/bgbg/lllll/bbbb/ (10, 8) "[dir=both];
-"Raiz/xxxxx/bgbg/lllll/ccccc/ (11, 0) "->"Raiz/xxxxx/bgbg/lllll/ccccc/ (11, 8) "[dir=both];
-"Raiz/xxxxx/bgbg/lllll/ccccc/fgfgfg/ (12, 0) "->"Raiz/xxxxx/bgbg/lllll/ccccc/fgfgfg/ (12, 11) "[dir=both];
-"Raiz/xxxxx/bgbg/lllll/ccccc/fgfgfg/oooooooo/ (13, 0) "->"Raiz/xxxxx/bgbg/lllll/ccccc/fgfgfg/oooooooo/ (13, 12) "[dir=both];
+"Nombre: Raiz (0, 0) 
+Raiz"->"Nombre: Inicio (0, 1) 
+Raiz/"[dir=both];
+"Nombre: Inicio (0, 1) 
+Raiz/"->"Nombre: cdcd (0, 2) 
+Raiz/cdcd/"[dir=both];
+"Nombre: cdcd (0, 2) 
+Raiz/cdcd/"->"Nombre: xsxsxs (0, 3) 
+Raiz/xsxsxs/"[dir=both];
+"Nombre: xsxsxs (0, 3) 
+Raiz/xsxsxs/"->"Nombre: dwdwdw (0, 4) 
+Raiz/cdcd/dwdwdw/"[dir=both];
+"Nombre: dwdwdw (0, 4) 
+Raiz/cdcd/dwdwdw/"->"Nombre: sssss (0, 5) 
+Raiz/cdcd/sssss/"[dir=both];
+"Nombre: sssss (0, 5) 
+Raiz/cdcd/sssss/"->"Nombre: ggggg (0, 6) 
+Raiz/cdcd/sssss/ggggg/"[dir=both];
+"Nombre: cdcd (2, 0) 
+Raiz/cdcd/"->"Nombre: cdcd (2, 1) 
+Raiz/cdcd/"[dir=both];
+"Nombre: xsxsxs (3, 0) 
+Raiz/xsxsxs/"->"Nombre: xsxsxs (3, 1) 
+Raiz/xsxsxs/"[dir=both];
+"Nombre: dwdwdw (4, 0) 
+Raiz/cdcd/dwdwdw/"->"Nombre: dwdwdw (4, 2) 
+Raiz/cdcd/dwdwdw/"[dir=both];
+"Nombre: sssss (5, 0) 
+Raiz/cdcd/sssss/"->"Nombre: sssss (5, 2) 
+Raiz/cdcd/sssss/"[dir=both];
+"Nombre: ggggg (6, 0) 
+Raiz/cdcd/sssss/ggggg/"->"Nombre: ggggg (6, 5) 
+Raiz/cdcd/sssss/ggggg/"[dir=both];
 rank=same{
-"Raiz (0, 0) "->"Raiz/ (1, 0) "[dir=both];
+"Nombre: Raiz (0, 0) 
+Raiz"->"Nombre: Inicio (1, 0) 
+Raiz/"[dir=both];
 }
 rank=same{
-"Raiz/ (1, 0) "->"Raiz/xxxxx/ (2, 0) "[dir=both];
+"Nombre: Inicio (1, 0) 
+Raiz/"->"Nombre: cdcd (2, 0) 
+Raiz/cdcd/"[dir=both];
 }
 rank=same{
-"Raiz/xxxxx/ (2, 0) "->"Raiz/ccdcd/ (3, 0) "[dir=both];
+"Nombre: cdcd (2, 0) 
+Raiz/cdcd/"->"Nombre: xsxsxs (3, 0) 
+Raiz/xsxsxs/"[dir=both];
 }
 rank=same{
-"Raiz/ccdcd/ (3, 0) "->"Raiz/wwww/ (4, 0) "[dir=both];
+"Nombre: xsxsxs (3, 0) 
+Raiz/xsxsxs/"->"Nombre: dwdwdw (4, 0) 
+Raiz/cdcd/dwdwdw/"[dir=both];
 }
 rank=same{
-"Raiz/wwww/ (4, 0) "->"Raiz/xxxxx/bgbg/ (5, 0) "[dir=both];
+"Nombre: dwdwdw (4, 0) 
+Raiz/cdcd/dwdwdw/"->"Nombre: sssss (5, 0) 
+Raiz/cdcd/sssss/"[dir=both];
 }
 rank=same{
-"Raiz/xxxxx/bgbg/ (5, 0) "->"Raiz/xxxxx/qqqq/ (6, 0) "[dir=both];
+"Nombre: sssss (5, 0) 
+Raiz/cdcd/sssss/"->"Nombre: ggggg (6, 0) 
+Raiz/cdcd/sssss/ggggg/"[dir=both];
 }
 rank=same{
-"Raiz/xxxxx/qqqq/ (6, 0) "->"Raiz/xxxxx/bgbg/jujuju/ (7, 0) "[dir=both];
+"Nombre: Inicio (0, 1) 
+Raiz/"->"Nombre: cdcd (2, 1) 
+Raiz/cdcd/"[dir=both];
 }
 rank=same{
-"Raiz/xxxxx/bgbg/jujuju/ (7, 0) "->"Raiz/xxxxx/bgbg/lllll/ (8, 0) "[dir=both];
+"Nombre: cdcd (2, 1) 
+Raiz/cdcd/"->"Nombre: xsxsxs (3, 1) 
+Raiz/xsxsxs/"[dir=both];
 }
 rank=same{
-"Raiz/xxxxx/bgbg/lllll/ (8, 0) "->"Raiz/xxxxx/bgbg/nnnnn/ (9, 0) "[dir=both];
+"Nombre: cdcd (0, 2) 
+Raiz/cdcd/"->"Nombre: dwdwdw (4, 2) 
+Raiz/cdcd/dwdwdw/"[dir=both];
 }
 rank=same{
-"Raiz/xxxxx/bgbg/nnnnn/ (9, 0) "->"Raiz/xxxxx/bgbg/lllll/bbbb/ (10, 0) "[dir=both];
+"Nombre: dwdwdw (4, 2) 
+Raiz/cdcd/dwdwdw/"->"Nombre: sssss (5, 2) 
+Raiz/cdcd/sssss/"[dir=both];
 }
 rank=same{
-"Raiz/xxxxx/bgbg/lllll/bbbb/ (10, 0) "->"Raiz/xxxxx/bgbg/lllll/ccccc/ (11, 0) "[dir=both];
-}
-rank=same{
-"Raiz/xxxxx/bgbg/lllll/ccccc/ (11, 0) "->"Raiz/xxxxx/bgbg/lllll/ccccc/fgfgfg/ (12, 0) "[dir=both];
-}
-rank=same{
-"Raiz/xxxxx/bgbg/lllll/ccccc/fgfgfg/ (12, 0) "->"Raiz/xxxxx/bgbg/lllll/ccccc/fgfgfg/oooooooo/ (13, 0) "[dir=both];
-}
-rank=same{
-"Raiz/ (0, 1) "->"Raiz/xxxxx/ (2, 1) "[dir=both];
-}
-rank=same{
-"Raiz/xxxxx/ (2, 1) "->"Raiz/ccdcd/ (3, 1) "[dir=both];
-}
-rank=same{
-"Raiz/ccdcd/ (3, 1) "->"Raiz/wwww/ (4, 1) "[dir=both];
-}
-rank=same{
-"Raiz/xxxxx/ (0, 2) "->"Raiz/xxxxx/bgbg/ (5, 2) "[dir=both];
-}
-rank=same{
-"Raiz/xxxxx/bgbg/ (5, 2) "->"Raiz/xxxxx/qqqq/ (6, 2) "[dir=both];
-}
-rank=same{
-"Raiz/xxxxx/bgbg/ (0, 5) "->"Raiz/xxxxx/bgbg/jujuju/ (7, 5) "[dir=both];
-}
-rank=same{
-"Raiz/xxxxx/bgbg/jujuju/ (7, 5) "->"Raiz/xxxxx/bgbg/lllll/ (8, 5) "[dir=both];
-}
-rank=same{
-"Raiz/xxxxx/bgbg/lllll/ (8, 5) "->"Raiz/xxxxx/bgbg/nnnnn/ (9, 5) "[dir=both];
-}
-rank=same{
-"Raiz/xxxxx/bgbg/lllll/ (0, 8) "->"Raiz/xxxxx/bgbg/lllll/bbbb/ (10, 8) "[dir=both];
-}
-rank=same{
-"Raiz/xxxxx/bgbg/lllll/bbbb/ (10, 8) "->"Raiz/xxxxx/bgbg/lllll/ccccc/ (11, 8) "[dir=both];
-}
-rank=same{
-"Raiz/xxxxx/bgbg/lllll/ccccc/ (0, 11) "->"Raiz/xxxxx/bgbg/lllll/ccccc/fgfgfg/ (12, 11) "[dir=both];
-}
-rank=same{
-"Raiz/xxxxx/bgbg/lllll/ccccc/fgfgfg/ (0, 12) "->"Raiz/xxxxx/bgbg/lllll/ccccc/fgfgfg/oooooooo/ (13, 12) "[dir=both];
+"Nombre: sssss (0, 5) 
+Raiz/cdcd/sssss/"->"Nombre: ggggg (6, 5) 
+Raiz/cdcd/sssss/ggggg/"[dir=both];
 }
 }

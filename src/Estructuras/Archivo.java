@@ -5,6 +5,7 @@
  */
 package Estructuras;
 
+import static Vistas.Login.usuarioActual;
 import java.time.LocalDateTime;
 
 /**
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 public class Archivo {
     String fechaHora;
     String ruta,nombre,adentro,contenido;
+    Usuario usuarioCreador;
     //String nombre;
     //String adentro;
    
@@ -21,9 +23,13 @@ public class Archivo {
     public Archivo(String nombre, String contenido) {
         //this.fechaHora = fechaHora;
         //this.ruta = ruta;
-        this.nombre = nombre;
+                         if(!nombre.contains(".")){
+                nombre = nombre+".txt";
+                            }
+                 this.nombre = nombre;
         this.adentro = contenido;
-        fechaHora=LocalDateTime.now().toString();
+                 fechaHora=LocalDateTime.now().toString();
+                 usuarioCreador=usuarioActual;
         
     }
 

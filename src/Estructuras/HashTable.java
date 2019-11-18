@@ -216,6 +216,7 @@ public void graficar(){
                     "                <TD>Indice</TD>\n" +
                     "                <TD>Usuario</TD>\n" +
                     "\t      <TD>Contraseña</TD>\n" +
+                    "                <TD>FechaYHora</TD>"+
                     "            </TR>");
 
             int count = 0;
@@ -232,11 +233,17 @@ public void graficar(){
                     pw.println("<TD>");
                     pw.println(u.getContrasenia());
                     pw.println("</TD>");
+                    pw.println("<TD>");
+                    pw.println(u.getFechaHora());
+                    pw.println("</TD>");
                     pw.println("</TR>");
                 }else{
                     pw.println("<TR>");
                     pw.println("<TD>");
                     pw.println(String.valueOf(count));
+                    pw.println("</TD>");
+                    pw.println("<TD>");
+                    pw.println();
                     pw.println("</TD>");
                     pw.println("<TD>");
                     pw.println();

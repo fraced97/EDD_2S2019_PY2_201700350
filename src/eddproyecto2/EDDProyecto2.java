@@ -21,21 +21,21 @@ public class EDDProyecto2 {
     
     public static void main(String[] args) {
         tabla = new HashTable(); 
-        /*tabla.insertar(new Usuario("Fredy","hola"));
-         tabla.insertar(new Usuario("Jesus","hola"));
-         tabla.insertar(new Usuario("Eli","hola"));
-         tabla.insertar(new Usuario("Karen","hola"));
-         tabla.insertar(new Usuario("Ricardo","hola"));
-         tabla.insertar(new Usuario("Manuel","hola"));
-         tabla.insertar(new Usuario("Brandon","hola"));
-         tabla.insertar(new Usuario("Jose","hola"));
-         tabla.insertar(new Usuario("Gar","hola"));
-         tabla.insertar(new Usuario("Bob","hola"));
-         tabla.insertar(new Usuario("Mario","hola"));
-         tabla.insertar(new Usuario("Milton","hola"));
-         tabla.insertar(new Usuario("ys","hola"));
-         tabla.insertar(new Usuario("gerardo","hola"));
-         tabla.insertar(new Usuario("Cris","hola"));*/
+        tabla.insertar(new Usuario("Fredy","12345678"));
+         tabla.insertar(new Usuario("Jesus","12345678"));
+         tabla.insertar(new Usuario("Eli","12345678"));
+         tabla.insertar(new Usuario("Karen","12345678"));
+         tabla.insertar(new Usuario("Ricardo","12345678"));
+         tabla.insertar(new Usuario("Manuel","12345678"));
+         tabla.insertar(new Usuario("Brandon","12345678"));
+         tabla.insertar(new Usuario("Jose","12345678"));
+         tabla.insertar(new Usuario("Gar","12345678"));
+         tabla.insertar(new Usuario("Bob","12345678"));
+         tabla.insertar(new Usuario("Mario","12345678"));
+         tabla.insertar(new Usuario("Milton","12345678"));
+         tabla.insertar(new Usuario("ys","12345678"));
+         tabla.insertar(new Usuario("gerardo","12345678"));
+         tabla.insertar(new Usuario("Cris","12345678"));
          
          
          Login login = new Login();

@@ -348,14 +348,14 @@ public class ArbolAVL2 {
 
     public void graficarArbol2(Nodo raiz7,PrintWriter escribir){
         if (raiz7 !=null) {
-             escribir.println("\"" + raiz7.archivo.getNombre() +"\";");
+             escribir.println("\"" + raiz7.archivo.getNombre()+"\n"+(raiz7.archivo.getAdentro())+"\n"+(raiz7.factorDeEquilibrio)+"\n"+(raiz7.archivo.fechaHora)+"\n"+(raiz7.archivo.usuarioCreador.getNickname())  +"\";");
         if (raiz7.hojaIzquierda != null) {
-             escribir.println("\"" + (raiz7.archivo.getNombre()) + "\"->\"" + (raiz7.hojaIzquierda.archivo.getNombre()) +  "\";");
+             escribir.println("\"" + (raiz7.archivo.getNombre())+"\n"+(raiz7.archivo.getAdentro())+"\n"+(raiz7.factorDeEquilibrio)+"\n"+(raiz7.archivo.fechaHora)+"\n"+(raiz7.archivo.usuarioCreador.getNickname()) + "\"->\"" + (raiz7.hojaIzquierda.archivo.getNombre())+"\n"+(raiz7.hojaIzquierda.archivo.getAdentro())+"\n"+(raiz7.hojaIzquierda.factorDeEquilibrio)+"\n"+(raiz7.hojaIzquierda.archivo.fechaHora)+"\n"+(raiz7.hojaIzquierda.archivo.usuarioCreador.getNickname())  +  "\";");
         }
         
                
         if (raiz7.hojaDerecha!=null) {
-             escribir.println("\"" + (raiz7.archivo.getNombre()) +"\"->\"" + (raiz7.hojaDerecha.archivo.getNombre()) +  "\";");
+             escribir.println("\"" + (raiz7.archivo.getNombre())+"\n"+(raiz7.archivo.getAdentro())+"\n"+(raiz7.factorDeEquilibrio)+"\n"+(raiz7.archivo.fechaHora)+"\n"+(raiz7.archivo.usuarioCreador.getNickname()) +"\"->\"" + (raiz7.hojaDerecha.archivo.getNombre())+"\n"+(raiz7.hojaDerecha.archivo.getAdentro())+"\n"+(raiz7.hojaDerecha.factorDeEquilibrio)+"\n"+(raiz7.hojaDerecha.archivo.fechaHora)+"\n"+(raiz7.hojaDerecha.archivo.usuarioCreador.getNickname()) +  "\";");
         }
  
         graficarArbol2(raiz7.hojaIzquierda, escribir);
