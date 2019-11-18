@@ -5,7 +5,9 @@
  */
 package Vistas;
 
+import static eddproyecto2.EDDProyecto2.pila;
 import static eddproyecto2.EDDProyecto2.tabla;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -57,6 +59,11 @@ public class VentanaAdmin extends javax.swing.JFrame {
         });
 
         jButton3.setText("Historial");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Salir");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +127,8 @@ public class VentanaAdmin extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        String fecha = LocalDateTime.now().toString();
+        pila.push("Deslogueado", "Admin", fecha);
         Login login = new Login();
         login.setVisible(true);
         this.dispose();
@@ -137,6 +146,11 @@ public class VentanaAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         tabla.graficar();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        pila.graficar();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

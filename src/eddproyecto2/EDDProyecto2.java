@@ -5,6 +5,7 @@ package eddproyecto2;
 import Estructuras.ArbolAVL2;
 import Estructuras.HashTable;
 import Estructuras.MatrizAd;
+import Estructuras.Pila;
 import Estructuras.Usuario;
 import Vistas.Login;
 import java.io.UnsupportedEncodingException;
@@ -20,10 +21,12 @@ public class EDDProyecto2 {
      * @param args the command line arguments
      */
     public static HashTable tabla;
+    public static Pila pila;
     
     public static void main(String[] args){
         tabla = new HashTable(); 
-        tabla.insertar(new Usuario("Fredy","12345678"));
+        pila = new Pila();
+        /*tabla.insertar(new Usuario("Fredy","12345678"));
          tabla.insertar(new Usuario("Jesus","12345678"));
          tabla.insertar(new Usuario("Eli","12345678"));
          tabla.insertar(new Usuario("Karen","12345678"));
@@ -37,7 +40,7 @@ public class EDDProyecto2 {
          tabla.insertar(new Usuario("Milton","12345678"));
          tabla.insertar(new Usuario("ys","12345678"));
          tabla.insertar(new Usuario("gerardo","12345678"));
-         tabla.insertar(new Usuario("Cris","12345678"));
+         tabla.insertar(new Usuario("Cris","12345678"));*/
          
          
          Login login = new Login();

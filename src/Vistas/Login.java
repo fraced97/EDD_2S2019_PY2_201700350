@@ -7,6 +7,8 @@ package Vistas;
 
 import Estructuras.Usuario;
 import eddproyecto2.*;
+import static eddproyecto2.EDDProyecto2.pila;
+import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 
 /**
@@ -129,6 +131,8 @@ public class Login extends javax.swing.JFrame {
         boolean condicion=true;
         if(txtNombre.getText().equalsIgnoreCase("Admin")&&txtContra.getText().equalsIgnoreCase("Admin")){
             //System.out.println("admin");
+            String fecha = LocalDateTime.now().toString();
+            pila.push("Loggeado", "Admin", fecha);
             VentanaAdmin ventana= new VentanaAdmin();
             ventana.setVisible(true);
             this.dispose();
@@ -141,6 +145,8 @@ public class Login extends javax.swing.JFrame {
                 VentanaUsuario vUsuario = new VentanaUsuario();
                 vUsuario.setVisible(true);
                 this.dispose();
+                String fecha = LocalDateTime.now().toString();
+                pila.push("Loggeado", usuarioActual.getNickname(), fecha);
                 break;
             }
             }

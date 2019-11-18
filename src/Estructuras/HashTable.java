@@ -130,7 +130,7 @@ public class HashTable {
      if(!buscarUsuarioExiste(usuario.getNickname())){
        int codigo = (usuario.getNickname().hashCode() & 0x7fffffff) % tamanio;
          if (this.usuario[codigo]== null){
-             usuariosIngresadoExito++;
+             //usuariosIngresadoExito++;
           this.usuario[codigo] = usuario;
        }else{
           if(codigo*codigo > tamanio){
@@ -140,7 +140,7 @@ public class HashTable {
               
                i=0;
                  }
-          usuariosIngresadoExito++;
+          //usuariosIngresadoExito++;
        this.usuario[i] = usuario;
            break;                      }
              }
@@ -186,12 +186,14 @@ public class HashTable {
             usuarioError.add(usuario.getNickname());
             contraError.add(usuario.getContrasenia());
             comentarioError.add("Usuario Ya existe");
+            usuariosIngresadoExito++;
         }
         }else{
             JOptionPane.showMessageDialog(null, "Contraseña es menor de 8");
             usuarioError.add(usuario.getNickname());
             contraError.add(usuario.getContrasenia());
             comentarioError.add("La contraseña no posee al menos 8 caracteres");
+            usuariosIngresadoExito++;
         }
 
     }

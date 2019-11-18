@@ -564,7 +564,7 @@ public class MatrizAd {
         try {
             escribir = new PrintWriter(punto.getAbsolutePath() + "//" + "Grafo.dot", "UTF-8");
             escribir.println("digraph G {\n");
-            escribir.println("node [shape=box, color=cornflowerblue ];");
+            //escribir.println("node [shape=box, color=cornflowerblue ];");
             escribir.println("rankdir=LR;");
             //graficarMatriz2(escribir);
             while(true){

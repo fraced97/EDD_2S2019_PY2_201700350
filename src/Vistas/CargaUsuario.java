@@ -28,9 +28,11 @@ public class CargaUsuario extends javax.swing.JFrame {
      */
     JFileChooser seleccionararchivo = new JFileChooser();
     File archivo;
+    int contadorUsuariosCorrectos;
     public CargaUsuario() {
         super("Carga de Usuarios");
         initComponents();
+        
         
         
         
@@ -128,6 +130,7 @@ public class CargaUsuario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        contadorUsuariosCorrectos=0;
         tabla.comentarioError.clear();
         tabla.contraError.clear();
         tabla.usuarioError.clear();
@@ -144,7 +147,7 @@ public class CargaUsuario extends javax.swing.JFrame {
                         System.out.println("No es .csv");
                     }
                 }
-        txtUsuariosE.setText(String.valueOf(tabla.usuariosIngresadoExito));
+        txtUsuariosE.setText(String.valueOf(contadorUsuariosCorrectos));
         VentanaUsuarioError uError= new VentanaUsuarioError();
         uError.setVisible(true);
         
@@ -155,7 +158,7 @@ public class CargaUsuario extends javax.swing.JFrame {
 
         String linea;
         //String Random;
-        int contador=0;
+        int contador=-1;
         try {
             String datos[];
             String contra;
@@ -166,7 +169,7 @@ public class CargaUsuario extends javax.swing.JFrame {
             while (null!=line) {
             String [] fields = line.split(",");
             line = BR.readLine();
-            if(contador!=0){
+            if(contador!=-1){
                System.out.println(Arrays.toString(fields));
                 //System.out.println(line);
                 tabla.insertar(new Usuario(fields[0],fields[1]));
@@ -186,7 +189,7 @@ public class CargaUsuario extends javax.swing.JFrame {
             
                 
          }
-
+            contadorUsuariosCorrectos=contador-tabla.usuariosIngresadoExito;
         } catch (IOException e) {
 
         }

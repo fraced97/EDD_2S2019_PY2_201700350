@@ -1,32 +1,13 @@
 digraph G {
 
-node [shape=box, color=cornflowerblue ];
 rankdir=LR;
 "Inicio
-Carpetas: 2"->"fred
-Carpetas: 2";
+Carpetas: 2"->"Crear
+Carpetas: 1";
 "Inicio
-Carpetas: 2"->"Jesus
+Carpetas: 2"->"FRED
 Carpetas: 0";
-"fred
-Carpetas: 2"->"wewewew
-Carpetas: 2";
-"fred
-Carpetas: 2"->"cdcdcd
-Carpetas: 0";
-"wewewew
-Carpetas: 2"->"sssss
-Carpetas: 0";
-"wewewew
-Carpetas: 2"->"xxxxx
-Carpetas: 3";
-"xxxxx
-Carpetas: 3"->"qqqqq
-Carpetas: 0";
-"xxxxx
-Carpetas: 3"->"zzzz
-Carpetas: 0";
-"xxxxx
-Carpetas: 3"->"ggggg
+"Crear
+Carpetas: 1"->"XDXD
 Carpetas: 0";
 }
