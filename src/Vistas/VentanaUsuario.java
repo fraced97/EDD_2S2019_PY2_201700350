@@ -702,6 +702,8 @@ public final class VentanaUsuario extends javax.swing.JFrame {
                 if(u.getNickname().equals(amigo)){
                u.getMatriz().buscarMatriz(0, 1).getArbol().insertarOriginal(archivo);
                      JOptionPane.showMessageDialog(null, "Se compartio con Exito");
+                     return;
+                    //break;
                     
                 }
             }
@@ -719,7 +721,8 @@ public final class VentanaUsuario extends javax.swing.JFrame {
            if(u.getNickname().equals(amigo)){
                              u.getMatriz().buscarMatriz(0, 1).getArbol().insertarOriginal(archivo);
                JOptionPane.showMessageDialog(null, "Se compartio con Exito");
-                    
+                                return;
+                                //break;
                      }
                          }
             }
