@@ -5,7 +5,7 @@
  */
 package Estructuras;
 
-import Vistas.ScrollPaneReport;
+
 import Vistas.VentanaReporte;
 import Vistas.VentanaReporte2;
 import Vistas.VentanaReporte3;
@@ -551,6 +551,88 @@ public class MatrizAd {
 
     }
 
+    public void graficarGrafo(){
+        File punto = new File(".");
+        PrintWriter escribir = null;
+        NodoMatrizAd temporal;
+        temporal=buscarMatriz(0,1);
+        NodoMatrizAd interseccionMatriz;
+        int contador=0;
+        int contador2=0;
+       // NodoMatrizAd temporal2;
+        //temporal2 = buscarMatriz(0,1);
+        try {
+            escribir = new PrintWriter(punto.getAbsolutePath() + "//" + "Grafo.dot", "UTF-8");
+            escribir.println("digraph G {\n");
+            escribir.println("node [shape=box, color=cornflowerblue ];");
+            escribir.println("rankdir=LR;");
+            //graficarMatriz2(escribir);
+            while(true){
+                if(temporal.getAbajo()!=null){
+                    if(temporal.getSiguiente()!=null){
+                        interseccionMatriz=temporal.getSiguiente();
+                        while(interseccionMatriz!=null){
+                            NodoMatrizAd aux;
+                            aux=temporal.getSiguiente();
+                            
+                            while(aux!=null){
+                            contador++;
+                            aux=aux.getSiguiente();
+                        }
+                            NodoMatrizAd aux2;
+                            aux2=buscarMatriz(0,interseccionMatriz.getX());
+                            if(aux2.getSiguiente()!=null){
+                                aux2=aux2.getSiguiente();
+                                //contador2=0;
+                                while(aux2!=null){
+                                contador2++;
+                                aux2=aux2.getSiguiente();
+                            }
+                            }
+                            
+                            escribir.println("\"" + (temporal.getArbol().getNombre())+"\n"+("Carpetas: ")+String.valueOf(contador)+ "\"->\"" + (interseccionMatriz.getArbol().getNombre())+"\n"+("Carpetas: ")+ String.valueOf(contador2) +"\";");
+                            contador2=0;
+                            contador=0;
+                            interseccionMatriz=interseccionMatriz.getSiguiente();
+                        }
+                    }
+                    temporal=temporal.getAbajo();
+                }else{
+                    break;
+                }
+            }
+            
+            
+            
+            
+            
+            escribir.println("}");
+            int numero=0;
+            numero = (int) (Math.random() * 1000000000) + 1;
+            escribir.close();
+            ProcessBuilder abrir;
+            String rutaImagen = punto.getAbsolutePath() + "//" + "GrafoImagen"+String.valueOf(numero)+".jpg";
+            String rutaDot = punto.getAbsolutePath() + "//" + "Grafo.dot";
+            abrir = new ProcessBuilder("dot", "-Tjpg", "-o", rutaImagen, rutaDot);
+
+            //abrir = new ProcessBuilder("dot -Tjpg Arbol.dot -o imagenArbol.jpg");
+            //system("dot -Tjpg Arbol.dot -o imagenArbol.jpg")
+            //os.system("imagenArbol.jpg")
+            abrir.redirectErrorStream(true);
+            abrir.start();
+            ///////////////////////////// Creo una ventana nueva con la imagen 
+            //ScrollPaneReport temporal3 = new ScrollPaneReport(rutaImagen);
+
+            //VentanaReporte temporal4 = new VentanaReporte(rutaImagen);
+            //temporal4.abrirVentana(rutaImagen);
+            VentanaReporte3 temporal4 = new VentanaReporte3(rutaImagen);
+            //temporal4.abrirVentana(rutaImagen);
+        } catch (Exception e) {
+            System.out.println("ERROR PARA CREAR ARCHIVO");
+        }
+    }
+    
+    
     public void graficarMatriz() {
 
         File punto = new File(".");

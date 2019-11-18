@@ -7,7 +7,7 @@ package Estructuras;
 
 import java.io.File;
 import java.io.PrintWriter;
-import Vistas.ScrollPaneReport;
+
 import Vistas.VentanaReporte;
 import Vistas.VentanaReporte3;
 import java.util.ArrayList;
@@ -168,7 +168,7 @@ public class ArbolAVL2 {
     }
 
     // Rotaci�n simple a la izquierda
-    Nodo SimpleLeft(Nodo x) {
+    Nodo izquierdaSimple(Nodo x) {
         Nodo aux = x.hojaIzquierda;
         x.hojaIzquierda = aux.hojaDerecha;
         aux.hojaDerecha = x;
@@ -178,7 +178,7 @@ public class ArbolAVL2 {
     }
 
     // Rotaci�n simple a la derecha
-    Nodo SimpleRight(Nodo x) {
+    Nodo derechaSimple(Nodo x) {
         Nodo aux = x.hojaDerecha;
         x.hojaDerecha = aux.hojaIzquierda;
         aux.hojaIzquierda = x;
@@ -188,33 +188,33 @@ public class ArbolAVL2 {
     }
 
     // Rotaci�n doble a la derecha
-    Nodo DoubleLeft(Nodo x) {
+    Nodo izquierdaDoble(Nodo x) {
         Nodo temp;
-        x.hojaIzquierda = SimpleRight(x.hojaIzquierda);
-        temp = SimpleLeft(x);
+        x.hojaIzquierda = derechaSimple(x.hojaIzquierda);
+        temp = izquierdaSimple(x);
         return temp;
     }
 
     // Rotaci�n doble a la izquierda
-    Nodo DoubleRight(Nodo x) {
+    Nodo DerechaDoble(Nodo x) {
         Nodo temp;
-        x.hojaDerecha = SimpleLeft(x.hojaDerecha);
-        temp = SimpleRight(x);
+        x.hojaDerecha = izquierdaSimple(x.hojaDerecha);
+        temp = derechaSimple(x);
         return temp;
     }
 
-    Nodo insertarAvl(Nodo nuevo, Nodo aux) {
+    Nodo insertarHojaEnAvl(Nodo nuevo, Nodo aux) {
         Nodo nuevoPadre = aux;
         if (nuevo.archivo.getNombre().compareToIgnoreCase(aux.archivo.getNombre()) < 0) {
             if (aux.hojaIzquierda == null) {
                 aux.hojaIzquierda = nuevo;
             } else {
-                aux.hojaIzquierda = insertarAvl(nuevo, aux.hojaIzquierda);
+                aux.hojaIzquierda = insertarHojaEnAvl(nuevo, aux.hojaIzquierda);
                 if ((getFe(aux.hojaIzquierda) - getFe(aux.hojaDerecha)) == 2) {
                     if (nuevo.archivo.getNombre().compareToIgnoreCase(aux.hojaIzquierda.archivo.getNombre()) < 0) {
-                        nuevoPadre = SimpleLeft(aux);
+                        nuevoPadre = izquierdaSimple(aux);
                     } else {
-                        nuevoPadre = DoubleLeft(aux);
+                        nuevoPadre = izquierdaDoble(aux);
                     }
 
                 }
@@ -223,12 +223,12 @@ public class ArbolAVL2 {
             if (aux.hojaDerecha == null) {
                 aux.hojaDerecha = nuevo;
             } else {
-                aux.hojaDerecha = insertarAvl(nuevo, aux.hojaDerecha);
+                aux.hojaDerecha = insertarHojaEnAvl(nuevo, aux.hojaDerecha);
                 if ((getFe(aux.hojaDerecha) - getFe(aux.hojaIzquierda)) == 2) {
                     if (nuevo.archivo.getNombre().compareToIgnoreCase(aux.hojaDerecha.archivo.getNombre()) > 0) {
-                        nuevoPadre = SimpleRight(aux);
+                        nuevoPadre = derechaSimple(aux);
                     } else {
-                        nuevoPadre = DoubleRight(aux);
+                        nuevoPadre = DerechaDoble(aux);
                     }
                 }
             }
@@ -258,12 +258,12 @@ public class ArbolAVL2 {
                     }
                     this.raiz = null;
                     for(Archivo a: this.getArchivosList()){
-                     this.insertar(a);
+                     this.insertarOriginal(a);
                         }
         
     }
 
-    public ArbolAVL2 insertar(Archivo dato) {
+    public ArbolAVL2 insertarOriginal(Archivo dato) {
         
         Nodo nuevo = new Nodo(dato);
         this.inorden2();
@@ -275,7 +275,7 @@ public class ArbolAVL2 {
                 int reply = JOptionPane.showConfirmDialog(null, "Nombre de Archivo ya existente, desea continuar?", "Este Nombre Ya Existe", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     this.eliminarHojaArbol(dato);
-                    this.insertar(dato);
+                    this.insertarOriginal(dato);
                 }
             }
         }
@@ -285,7 +285,7 @@ public class ArbolAVL2 {
         if (raiz == null) {
             raiz = nuevo;
         } else {
-            raiz = insertarAvl(nuevo, raiz);
+            raiz = insertarHojaEnAvl(nuevo, raiz);
         }
                     return this;
     }

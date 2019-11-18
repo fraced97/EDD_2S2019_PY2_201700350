@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -148,7 +149,7 @@ public class CargaUsuario extends javax.swing.JFrame {
         uError.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
-    public void leer_archivo(File archivo2) {
+    public void leer_archivo(File archivo2){
         FileReader FR = null;
         BufferedReader BR = null;
 

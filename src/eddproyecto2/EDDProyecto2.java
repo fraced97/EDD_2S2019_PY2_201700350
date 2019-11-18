@@ -7,6 +7,8 @@ import Estructuras.HashTable;
 import Estructuras.MatrizAd;
 import Estructuras.Usuario;
 import Vistas.Login;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  *
@@ -19,7 +21,7 @@ public class EDDProyecto2 {
      */
     public static HashTable tabla;
     
-    public static void main(String[] args) {
+    public static void main(String[] args){
         tabla = new HashTable(); 
         tabla.insertar(new Usuario("Fredy","12345678"));
          tabla.insertar(new Usuario("Jesus","12345678"));

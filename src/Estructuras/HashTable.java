@@ -197,70 +197,46 @@ public class HashTable {
     }
 public void graficar(){
     //FileWriter fichero = null;
-        PrintWriter pw = null;
+        PrintWriter escribir = null;
         try {
 
         File punto = new File (".");
-        //fileName = new SimpleDateFormat("yyyyMMddHHmmss''").format(new Date());
-        //fichero = new FileWriter(punto.getAbsolutePath() + "//" +"TablaHash" + ".txt");
-        
-        pw = new PrintWriter(punto.getAbsolutePath() + "//" + "HashTable.dot", "UTF-8");
+
+        escribir = new PrintWriter(punto.getAbsolutePath() + "//" + "HashTable.dot", "UTF-8");
 
 
-            pw.println("digraph test {\n" +
-                    "    graph [ratio=fill];\n" +
-                    "    node [label=\"\\N\", fontsize=15, shape=plaintext];\n" +
-                    "    arset [label=<\n" +
-                    "        <TABLE ALIGN=\"LEFT\">\n" +
-                    "            <TR>\n" +
-                    "                <TD>Indice</TD>\n" +
-                    "                <TD>Usuario</TD>\n" +
-                    "\t      <TD>Contraseña</TD>\n" +
-                    "                <TD>FechaYHora</TD>"+
-                    "            </TR>");
+     escribir.println("digraph test {\n" +
+                                "    graph [ratio=fill];\n" +
+             "    node [label=\"\\N\", fontsize=15, shape=plaintext];\n" +
+          "    arset [label=<\n" +
+                              "        <TABLE ALIGN=\"LEFT\">\n" +
+              "            <TR>\n" +
+                      "                <TD>Indice</TD>\n" +
+                "                <TD>Usuario</TD>\n" +
+                                    "\t      <TD>Contraseña</TD>\n" +
+            "                <TD>FechaYHora</TD>"+
+                                    "            </TR>");
 
-            int count = 0;
+            int contadorColumna = 0;
             for(Usuario u: usuario){
-                count++;
+                contadorColumna++;
                 if(u != null){
-                    pw.println("<TR>");
-                    pw.println("<TD>");
-                    pw.println(String.valueOf(count));
-                    pw.println("</TD>");
-                    pw.println("<TD>");
-                    pw.println(u.getNickname());
-                    pw.println("</TD>");
-                    pw.println("<TD>");
-                    pw.println(u.getContrasenia());
-                    pw.println("</TD>");
-                    pw.println("<TD>");
-                    pw.println(u.getFechaHora());
-                    pw.println("</TD>");
-                    pw.println("</TR>");
+               escribir.println("<TR>");escribir.println("<TD>");escribir.println(String.valueOf(contadorColumna));escribir.println("</TD>");escribir.println("<TD>");escribir.println(u.getNickname());
+          escribir.println("</TD>");escribir.println("<TD>");escribir.println(u.getContrasenia2());
+             escribir.println("</TD>");escribir.println("<TD>");escribir.println(u.getFechaHora());escribir.println("</TD>");escribir.println("</TR>");
                 }else{
-                    pw.println("<TR>");
-                    pw.println("<TD>");
-                    pw.println(String.valueOf(count));
-                    pw.println("</TD>");
-                    pw.println("<TD>");
-                    pw.println();
-                    pw.println("</TD>");
-                    pw.println("<TD>");
-                    pw.println();
-                    pw.println("</TD>");
-                    pw.println("<TD>");
-                    pw.println();
-                    pw.println("</TD>");
-                    pw.println("</TR>");
+             escribir.println("<TR>");escribir.println("<TD>");escribir.println(String.valueOf(contadorColumna));escribir.println("</TD>");escribir.println("<TD>");escribir.println();
+              escribir.println("</TD>");escribir.println("<TD>");escribir.println();escribir.println("</TD>");escribir.println("<TD>");escribir.println();escribir.println("</TD>");
+                 escribir.println("</TR>");
                 }
 
             }
 
-            pw.println(" </TABLE>\n" +
+   escribir.println(" </TABLE>\n" +
                     "    >, ];\n" +
                     "}");
             
-            pw.close();
+            escribir.close();
             int numero=0;
             numero = (int) (Math.random() * 1000000000) + 1;
             ProcessBuilder abrir;
@@ -275,14 +251,7 @@ public void graficar(){
 
             } catch (Exception e) {
                 e.printStackTrace();
-            } finally {
-                try {
-  
-                } catch (Exception e2) {
-                    e2.printStackTrace();
-                }
-                
-            }
+            } 
             //Llamar a la funcion que sacara la grafica del codigo ejecutado
             //creacionDibujo(fileName);
 }
