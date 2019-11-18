@@ -8,18 +8,26 @@ package Vistas;
 import Estructuras.ArbolAVL2;
 import Estructuras.Archivo;
 import Estructuras.MatrizAd.NodoMatrizAd;
+import Estructuras.Usuario;
 import static Vistas.Login.usuarioActual;
 import static eddproyecto2.EDDProyecto2.tabla;
 import java.awt.Component;
 import java.awt.Image;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Arrays;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.ListCellRenderer;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -34,6 +42,8 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         NodoMatrizAd antes;
                 NodoMatrizAd father;
             NodoMatrizAd rutaActual;
+            JFileChooser seleccionararchivo = new JFileChooser();
+    File archivo;
             
     public VentanaUsuario() {
         super("Bienvenido "+ usuarioActual.getNickname());
@@ -240,6 +250,11 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         });
 
         jButton2.setText("Carga Archivos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jList3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -605,6 +620,67 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btModificarAActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        seleccionararchivo.setFileFilter(new FileNameExtensionFilter("todos los archivos *.csv", "csv", "CSV"));
+                int abrir = seleccionararchivo.showDialog(null, "Abrir");
+                if (abrir == JFileChooser.APPROVE_OPTION) {
+                    String PATH = seleccionararchivo.getSelectedFile().getAbsolutePath();
+                    if (PATH.endsWith(".csv") || PATH.endsWith(".CSV")) {
+                        archivo = seleccionararchivo.getSelectedFile();
+                        leer_archivo(archivo);
+
+                    } else {
+                        System.out.println("No es .csv");
+                    }
+                }
+                Archivos();
+                Carpetas();
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    public void leer_archivo(File archivo2) {
+        FileReader FR = null;
+        BufferedReader BR = null;
+
+        String linea;
+        //String Random;
+        int contador=0;
+        try {
+            String datos[];
+            String contra;
+            //int contador = 0;
+            FR = new FileReader(archivo);
+            BR = new BufferedReader(FR);
+            String line = BR.readLine();
+            while (null!=line) {
+            String [] fields = line.split(",");
+            line = BR.readLine();
+            if(contador!=0){
+               //System.out.println(Arrays.toString(fields));
+                //System.out.println(line);
+                //tabla.insertar(new Usuario(fields[0],fields[1]));
+                if(nodoEnComunMatriz==null){
+                                NodoMatrizAd aux =usuarioActual.getMatriz().buscarMatriz(father.getX(), father.getY());
+           usuarioActual.getMatriz().buscarMatriz(aux.getX(), aux.getY()).getArbol().insertar(new Archivo(fields[0],fields[1]));
+                    }else{
+                        NodoMatrizAd aux =usuarioActual.getMatriz().buscarMatriz(nodoEnComunMatriz.getX(), nodoEnComunMatriz.getY());
+               usuarioActual.getMatriz().buscarMatriz(aux.getX(), aux.getY()).getArbol().insertar(new Archivo(fields[0],fields[1]));
+                    }
+                
+            }
+            contador=contador+1;
+     
+         }
+
+        } catch (IOException e) {
+
+        }
+
+    }
+    
+    
     public void Archivos(){
                     NodoMatrizAd aux;
                 if(this.nodoEnComunMatriz==null){
