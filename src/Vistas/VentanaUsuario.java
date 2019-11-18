@@ -700,6 +700,8 @@ public final class VentanaUsuario extends javax.swing.JFrame {
                     for(Usuario u: tabla.usuario){
             if(u != null){
                 if(u.getNickname().equals(amigo)){
+                    String fecha = LocalDateTime.now().toString();
+                    pila.push("Compartio un Archivo", usuarioActual.getNickname(), fecha);
                u.getMatriz().buscarMatriz(0, 1).getArbol().insertarOriginal(archivo);
                      JOptionPane.showMessageDialog(null, "Se compartio con Exito");
                      return;
@@ -719,6 +721,8 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         for(Usuario u: tabla.usuario){
                             if(u != null){
            if(u.getNickname().equals(amigo)){
+               String fecha = LocalDateTime.now().toString();
+                    pila.push("Compartio un Archivo", usuarioActual.getNickname(), fecha);
                              u.getMatriz().buscarMatriz(0, 1).getArbol().insertarOriginal(archivo);
                JOptionPane.showMessageDialog(null, "Se compartio con Exito");
                                 return;
@@ -732,8 +736,7 @@ public final class VentanaUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al compartir, intente nuevamente");
         }
         
-                String fecha = LocalDateTime.now().toString();
-                    pila.push("Compartio un Archivo", usuarioActual.getNickname(), fecha);
+                
        
     }//GEN-LAST:event_jButton5ActionPerformed
 
