@@ -7,14 +7,17 @@ package Vistas;
 
 import Estructuras.HashTable;
 import Estructuras.Usuario;
+import static eddproyecto2.EDDProyecto2.pila;
 import static eddproyecto2.EDDProyecto2.tabla;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -150,6 +153,8 @@ public class CargaUsuario extends javax.swing.JFrame {
         txtUsuariosE.setText(String.valueOf(contadorUsuariosCorrectos));
         VentanaUsuarioError uError= new VentanaUsuarioError();
         uError.setVisible(true);
+        String fecha = LocalDateTime.now().toString();
+        pila.push("Ingreso Usuarios", "Admin", fecha);
         
     }//GEN-LAST:event_jButton1ActionPerformed
     public void leer_archivo(File archivo2){
@@ -170,9 +175,33 @@ public class CargaUsuario extends javax.swing.JFrame {
             String [] fields = line.split(",");
             line = BR.readLine();
             if(contador!=-1){
-               System.out.println(Arrays.toString(fields));
+                if(fields.length==2){
+                    if(fields[0].equals("")){
+                        JOptionPane.showMessageDialog(null, "Hubo un error en el Nombre del Usuario");
+                        tabla.usuariosIngresadoExito++;
+                        tabla.comentarioError.add("No tenia Nombre de Usuario");
+                        tabla.contraError.add(fields[1]);
+                        tabla.usuarioError.add(fields[0]);
+                    }else{
+                        tabla.insertar(new Usuario(fields[0],fields[1]));
+                    }
+                    //System.out.println(Arrays.toString(fields));
                 //System.out.println(line);
-                tabla.insertar(new Usuario(fields[0],fields[1]));
+                    
+                }else if(fields.length==1){
+                    JOptionPane.showMessageDialog(null, "Vacio");
+                    tabla.usuariosIngresadoExito++;
+                    tabla.comentarioError.add("Vacio");
+                    tabla.contraError.add("");
+                    tabla.usuarioError.add("");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Error");
+                    tabla.usuariosIngresadoExito++;
+                    tabla.comentarioError.add("Error");
+                        tabla.contraError.add("");
+                        tabla.usuarioError.add("");
+                }
+               
             }
             contador=contador+1;
             /*if((fields[0].equalsIgnoreCase("Usuario")||fields[0].equalsIgnoreCase("Usuarios")||fields[0].equalsIgnoreCase("User"))&&((fields[1].equalsIgnoreCase("Password"))||fields[1].equalsIgnoreCase("Contraseña"))){

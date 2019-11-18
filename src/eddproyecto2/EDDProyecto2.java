@@ -26,21 +26,7 @@ public class EDDProyecto2 {
     public static void main(String[] args){
         tabla = new HashTable(); 
         pila = new Pila();
-        /*tabla.insertar(new Usuario("Fredy","12345678"));
-         tabla.insertar(new Usuario("Jesus","12345678"));
-         tabla.insertar(new Usuario("Eli","12345678"));
-         tabla.insertar(new Usuario("Karen","12345678"));
-         tabla.insertar(new Usuario("Ricardo","12345678"));
-         tabla.insertar(new Usuario("Manuel","12345678"));
-         tabla.insertar(new Usuario("Brandon","12345678"));
-         tabla.insertar(new Usuario("Jose","12345678"));
-         tabla.insertar(new Usuario("Gar","12345678"));
-         tabla.insertar(new Usuario("Bob","12345678"));
-         tabla.insertar(new Usuario("Mario","12345678"));
-         tabla.insertar(new Usuario("Milton","12345678"));
-         tabla.insertar(new Usuario("ys","12345678"));
-         tabla.insertar(new Usuario("gerardo","12345678"));
-         tabla.insertar(new Usuario("Cris","12345678"));*/
+        
          
          
          Login login = new Login();

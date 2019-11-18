@@ -2,12 +2,9 @@ digraph G {
 
 rankdir=LR;
 "Inicio
-Carpetas: 2"->"Crear
+Carpetas: 1"->"fred
 Carpetas: 1";
-"Inicio
-Carpetas: 2"->"FRED
-Carpetas: 0";
-"Crear
-Carpetas: 1"->"XDXD
+"fred
+Carpetas: 1"->"Ajua
 Carpetas: 0";
 }

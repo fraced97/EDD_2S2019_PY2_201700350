@@ -10,6 +10,7 @@ import Estructuras.Archivo;
 import Estructuras.MatrizAd.NodoMatrizAd;
 import Estructuras.Usuario;
 import static Vistas.Login.usuarioActual;
+import static eddproyecto2.EDDProyecto2.pila;
 import static eddproyecto2.EDDProyecto2.tabla;
 import java.awt.Component;
 import java.awt.Image;
@@ -17,6 +18,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
@@ -421,6 +423,8 @@ public final class VentanaUsuario extends javax.swing.JFrame {
             }
             
         }
+        String fecha = LocalDateTime.now().toString();
+        pila.push("Creo una carpeta", usuarioActual.getNickname(), fecha);
         Carpetas();
         
         
@@ -448,18 +452,24 @@ public final class VentanaUsuario extends javax.swing.JFrame {
                 this.Archivos();
             this.Carpetas();
           labelRuta.setText(fatherAux.getArbol().getRuta());
+          String fecha = LocalDateTime.now().toString();
+        pila.push("Abrio una Carpeta", usuarioActual.getNickname(), fecha);
             
             //rutaActual =aux;
     }//GEN-LAST:event_abrirCActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        String fecha = LocalDateTime.now().toString();
+        pila.push("Grafico la MatrizAdyacente", usuarioActual.getNickname(), fecha);
         usuarioActual.getMatriz().graficarMatriz();
         //tabla.graficar();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String fecha = LocalDateTime.now().toString();
+        pila.push("Se deslogueo", usuarioActual.getNickname(), fecha);
         Login login = new Login();
         login.setVisible(true);
         this.dispose();
@@ -543,6 +553,8 @@ public final class VentanaUsuario extends javax.swing.JFrame {
                     }
                 Archivos();
                 Carpetas();
+                String fecha = LocalDateTime.now().toString();
+        pila.push("Creo un Archivo", usuarioActual.getNickname(), fecha);
                 
                     
         
@@ -561,6 +573,8 @@ public final class VentanaUsuario extends javax.swing.JFrame {
              this.father.getArbol().graficarArbol();
         
              }
+                String fecha = LocalDateTime.now().toString();
+        pila.push("Grafico el ArbolAVL", usuarioActual.getNickname(), fecha);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jList3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList3MouseClicked
@@ -608,6 +622,8 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         }
                          Archivos();
                Carpetas();
+               String fecha = LocalDateTime.now().toString();
+        pila.push("Elimino un Archivo", usuarioActual.getNickname(), fecha);
     }//GEN-LAST:event_btEliminarAActionPerformed
 
     private void btModificarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btModificarAActionPerformed
@@ -637,6 +653,8 @@ public final class VentanaUsuario extends javax.swing.JFrame {
         }
         Archivos();
         Carpetas();
+        String fecha = LocalDateTime.now().toString();
+        pila.push("Modifico un Archivo", usuarioActual.getNickname(), fecha);
         
         
     }//GEN-LAST:event_btModificarAActionPerformed
@@ -658,19 +676,62 @@ public final class VentanaUsuario extends javax.swing.JFrame {
                 Archivos();
                 Carpetas();
         
-        
+        String fecha = LocalDateTime.now().toString();
+        pila.push("Realizo Carga Masiva de Archivos", usuarioActual.getNickname(), fecha);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        String fecha = LocalDateTime.now().toString();
+        pila.push("Observo el grafo", usuarioActual.getNickname(), fecha);
         usuarioActual.getMatriz().graficarGrafo();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        try{            
+                    if(nodoEnComunMatriz == null){
+                NodoMatrizAd temp = father;
+                        temp.getArbol().inorden2();
+                    Archivo archivo = temp.getArbol().getArchivosList().get(jList3.getSelectedIndex());
+          String amigo = "";
+                     amigo =JOptionPane.showInputDialog(null, "Nombre de Usuario"); 
+            
+                    for(Usuario u: tabla.usuario){
+            if(u != null){
+                if(u.getNickname().equals(amigo)){
+               u.getMatriz().buscarMatriz(0, 1).getArbol().insertarOriginal(archivo);
+                     JOptionPane.showMessageDialog(null, "Se compartio con Exito");
+                    
+                }
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Error al compartir, intente nuevamente");
+            
+        }else{
+                        NodoMatrizAd temp = this.nodoEnComunMatriz;
+            temp.getArbol().inorden2();
+          Archivo archivo = temp.getArbol().getArchivosList().get(jList3.getSelectedIndex());
+                      String amigo = "";
+                                amigo =JOptionPane.showInputDialog(null, "Nombre de Usuario"); 
+        for(Usuario u: tabla.usuario){
+                            if(u != null){
+           if(u.getNickname().equals(amigo)){
+                             u.getMatriz().buscarMatriz(0, 1).getArbol().insertarOriginal(archivo);
+               JOptionPane.showMessageDialog(null, "Se compartio con Exito");
+                    
+                     }
+                         }
+            }
+            
+                }
+        }catch(ArrayIndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(null, "Error al compartir, intente nuevamente");
+        }
         
-        
-        
+                String fecha = LocalDateTime.now().toString();
+                    pila.push("Compartio un Archivo", usuarioActual.getNickname(), fecha);
+       
     }//GEN-LAST:event_jButton5ActionPerformed
 
     public void leer_archivo(File archivo2) {

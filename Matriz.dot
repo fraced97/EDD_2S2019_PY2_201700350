@@ -5,53 +5,53 @@ node [shape=box, color=cornflowerblue ];
 Raiz"->"Nombre: Inicio (0, 1) 
 Raiz/"[dir=both];
 "Nombre: Inicio (0, 1) 
-Raiz/"->"Nombre: fefefe (0, 2) 
-Raiz/fefefe/"[dir=both];
-"Nombre: fefefe (0, 2) 
-Raiz/fefefe/"->"Nombre: freeeeeee (0, 3) 
-Raiz/freeeeeee/"[dir=both];
-"Nombre: freeeeeee (0, 3) 
-Raiz/freeeeeee/"->"Nombre: cdcdcdc (0, 4) 
-Raiz/fefefe/cdcdcdc/"[dir=both];
-"Nombre: cdcdcdc (0, 4) 
-Raiz/fefefe/cdcdcdc/"->"Nombre: xxxxx (0, 5) 
-Raiz/fefefe/xxxxx/"[dir=both];
-"Nombre: xxxxx (0, 5) 
-Raiz/fefefe/xxxxx/"->"Nombre: qwqwqw (0, 6) 
-Raiz/fefefe/qwqwqw/"[dir=both];
-"Nombre: qwqwqw (0, 6) 
-Raiz/fefefe/qwqwqw/"->"Nombre: yoooooo (0, 7) 
-Raiz/fefefe/xxxxx/yoooooo/"[dir=both];
-"Nombre: yoooooo (0, 7) 
-Raiz/fefefe/xxxxx/yoooooo/"->"Nombre: wereeeeeee (0, 8) 
-Raiz/fefefe/xxxxx/wereeeeeee/"[dir=both];
-"Nombre: wereeeeeee (0, 8) 
-Raiz/fefefe/xxxxx/wereeeeeee/"->"Nombre: popopop (0, 9) 
-Raiz/fefefe/xxxxx/wereeeeeee/popopop/"[dir=both];
-"Nombre: fefefe (2, 0) 
-Raiz/fefefe/"->"Nombre: fefefe (2, 1) 
-Raiz/fefefe/"[dir=both];
-"Nombre: freeeeeee (3, 0) 
-Raiz/freeeeeee/"->"Nombre: freeeeeee (3, 1) 
-Raiz/freeeeeee/"[dir=both];
-"Nombre: cdcdcdc (4, 0) 
-Raiz/fefefe/cdcdcdc/"->"Nombre: cdcdcdc (4, 2) 
-Raiz/fefefe/cdcdcdc/"[dir=both];
-"Nombre: xxxxx (5, 0) 
-Raiz/fefefe/xxxxx/"->"Nombre: xxxxx (5, 2) 
-Raiz/fefefe/xxxxx/"[dir=both];
-"Nombre: qwqwqw (6, 0) 
-Raiz/fefefe/qwqwqw/"->"Nombre: qwqwqw (6, 2) 
-Raiz/fefefe/qwqwqw/"[dir=both];
-"Nombre: yoooooo (7, 0) 
-Raiz/fefefe/xxxxx/yoooooo/"->"Nombre: yoooooo (7, 5) 
-Raiz/fefefe/xxxxx/yoooooo/"[dir=both];
-"Nombre: wereeeeeee (8, 0) 
-Raiz/fefefe/xxxxx/wereeeeeee/"->"Nombre: wereeeeeee (8, 5) 
-Raiz/fefefe/xxxxx/wereeeeeee/"[dir=both];
-"Nombre: popopop (9, 0) 
-Raiz/fefefe/xxxxx/wereeeeeee/popopop/"->"Nombre: popopop (9, 8) 
-Raiz/fefefe/xxxxx/wereeeeeee/popopop/"[dir=both];
+Raiz/"->"Nombre: FEFEF (0, 2) 
+Raiz/FEFEF/"[dir=both];
+"Nombre: FEFEF (0, 2) 
+Raiz/FEFEF/"->"Nombre: CDCD (0, 3) 
+Raiz/CDCD/"[dir=both];
+"Nombre: CDCD (0, 3) 
+Raiz/CDCD/"->"Nombre: SSSS (0, 4) 
+Raiz/FEFEF/SSSS/"[dir=both];
+"Nombre: SSSS (0, 4) 
+Raiz/FEFEF/SSSS/"->"Nombre: QQQQ (0, 5) 
+Raiz/FEFEF/QQQQ/"[dir=both];
+"Nombre: QQQQ (0, 5) 
+Raiz/FEFEF/QQQQ/"->"Nombre: VFXS (0, 6) 
+Raiz/FEFEF/SSSS/VFXS/"[dir=both];
+"Nombre: VFXS (0, 6) 
+Raiz/FEFEF/SSSS/VFXS/"->"Nombre: WEWEWAAA (0, 7) 
+Raiz/FEFEF/SSSS/WEWEWAAA/"[dir=both];
+"Nombre: WEWEWAAA (0, 7) 
+Raiz/FEFEF/SSSS/WEWEWAAA/"->"Nombre: PPPPP (0, 8) 
+Raiz/FEFEF/SSSS/PPPPP/"[dir=both];
+"Nombre: PPPPP (0, 8) 
+Raiz/FEFEF/SSSS/PPPPP/"->"Nombre: VCVCVZZZZZ (0, 9) 
+Raiz/FEFEF/SSSS/WEWEWAAA/VCVCVZZZZZ/"[dir=both];
+"Nombre: FEFEF (2, 0) 
+Raiz/FEFEF/"->"Nombre: FEFEF (2, 1) 
+Raiz/FEFEF/"[dir=both];
+"Nombre: CDCD (3, 0) 
+Raiz/CDCD/"->"Nombre: CDCD (3, 1) 
+Raiz/CDCD/"[dir=both];
+"Nombre: SSSS (4, 0) 
+Raiz/FEFEF/SSSS/"->"Nombre: SSSS (4, 2) 
+Raiz/FEFEF/SSSS/"[dir=both];
+"Nombre: QQQQ (5, 0) 
+Raiz/FEFEF/QQQQ/"->"Nombre: QQQQ (5, 2) 
+Raiz/FEFEF/QQQQ/"[dir=both];
+"Nombre: VFXS (6, 0) 
+Raiz/FEFEF/SSSS/VFXS/"->"Nombre: VFXS (6, 4) 
+Raiz/FEFEF/SSSS/VFXS/"[dir=both];
+"Nombre: WEWEWAAA (7, 0) 
+Raiz/FEFEF/SSSS/WEWEWAAA/"->"Nombre: WEWEWAAA (7, 4) 
+Raiz/FEFEF/SSSS/WEWEWAAA/"[dir=both];
+"Nombre: PPPPP (8, 0) 
+Raiz/FEFEF/SSSS/PPPPP/"->"Nombre: PPPPP (8, 4) 
+Raiz/FEFEF/SSSS/PPPPP/"[dir=both];
+"Nombre: VCVCVZZZZZ (9, 0) 
+Raiz/FEFEF/SSSS/WEWEWAAA/VCVCVZZZZZ/"->"Nombre: VCVCVZZZZZ (9, 7) 
+Raiz/FEFEF/SSSS/WEWEWAAA/VCVCVZZZZZ/"[dir=both];
 rank=same{
 "Nombre: Raiz (0, 0) 
 Raiz"->"Nombre: Inicio (1, 0) 
@@ -59,82 +59,82 @@ Raiz/"[dir=both];
 }
 rank=same{
 "Nombre: Inicio (1, 0) 
-Raiz/"->"Nombre: fefefe (2, 0) 
-Raiz/fefefe/"[dir=both];
+Raiz/"->"Nombre: FEFEF (2, 0) 
+Raiz/FEFEF/"[dir=both];
 }
 rank=same{
-"Nombre: fefefe (2, 0) 
-Raiz/fefefe/"->"Nombre: freeeeeee (3, 0) 
-Raiz/freeeeeee/"[dir=both];
+"Nombre: FEFEF (2, 0) 
+Raiz/FEFEF/"->"Nombre: CDCD (3, 0) 
+Raiz/CDCD/"[dir=both];
 }
 rank=same{
-"Nombre: freeeeeee (3, 0) 
-Raiz/freeeeeee/"->"Nombre: cdcdcdc (4, 0) 
-Raiz/fefefe/cdcdcdc/"[dir=both];
+"Nombre: CDCD (3, 0) 
+Raiz/CDCD/"->"Nombre: SSSS (4, 0) 
+Raiz/FEFEF/SSSS/"[dir=both];
 }
 rank=same{
-"Nombre: cdcdcdc (4, 0) 
-Raiz/fefefe/cdcdcdc/"->"Nombre: xxxxx (5, 0) 
-Raiz/fefefe/xxxxx/"[dir=both];
+"Nombre: SSSS (4, 0) 
+Raiz/FEFEF/SSSS/"->"Nombre: QQQQ (5, 0) 
+Raiz/FEFEF/QQQQ/"[dir=both];
 }
 rank=same{
-"Nombre: xxxxx (5, 0) 
-Raiz/fefefe/xxxxx/"->"Nombre: qwqwqw (6, 0) 
-Raiz/fefefe/qwqwqw/"[dir=both];
+"Nombre: QQQQ (5, 0) 
+Raiz/FEFEF/QQQQ/"->"Nombre: VFXS (6, 0) 
+Raiz/FEFEF/SSSS/VFXS/"[dir=both];
 }
 rank=same{
-"Nombre: qwqwqw (6, 0) 
-Raiz/fefefe/qwqwqw/"->"Nombre: yoooooo (7, 0) 
-Raiz/fefefe/xxxxx/yoooooo/"[dir=both];
+"Nombre: VFXS (6, 0) 
+Raiz/FEFEF/SSSS/VFXS/"->"Nombre: WEWEWAAA (7, 0) 
+Raiz/FEFEF/SSSS/WEWEWAAA/"[dir=both];
 }
 rank=same{
-"Nombre: yoooooo (7, 0) 
-Raiz/fefefe/xxxxx/yoooooo/"->"Nombre: wereeeeeee (8, 0) 
-Raiz/fefefe/xxxxx/wereeeeeee/"[dir=both];
+"Nombre: WEWEWAAA (7, 0) 
+Raiz/FEFEF/SSSS/WEWEWAAA/"->"Nombre: PPPPP (8, 0) 
+Raiz/FEFEF/SSSS/PPPPP/"[dir=both];
 }
 rank=same{
-"Nombre: wereeeeeee (8, 0) 
-Raiz/fefefe/xxxxx/wereeeeeee/"->"Nombre: popopop (9, 0) 
-Raiz/fefefe/xxxxx/wereeeeeee/popopop/"[dir=both];
+"Nombre: PPPPP (8, 0) 
+Raiz/FEFEF/SSSS/PPPPP/"->"Nombre: VCVCVZZZZZ (9, 0) 
+Raiz/FEFEF/SSSS/WEWEWAAA/VCVCVZZZZZ/"[dir=both];
 }
 rank=same{
 "Nombre: Inicio (0, 1) 
-Raiz/"->"Nombre: fefefe (2, 1) 
-Raiz/fefefe/"[dir=both];
+Raiz/"->"Nombre: FEFEF (2, 1) 
+Raiz/FEFEF/"[dir=both];
 }
 rank=same{
-"Nombre: fefefe (2, 1) 
-Raiz/fefefe/"->"Nombre: freeeeeee (3, 1) 
-Raiz/freeeeeee/"[dir=both];
+"Nombre: FEFEF (2, 1) 
+Raiz/FEFEF/"->"Nombre: CDCD (3, 1) 
+Raiz/CDCD/"[dir=both];
 }
 rank=same{
-"Nombre: fefefe (0, 2) 
-Raiz/fefefe/"->"Nombre: cdcdcdc (4, 2) 
-Raiz/fefefe/cdcdcdc/"[dir=both];
+"Nombre: FEFEF (0, 2) 
+Raiz/FEFEF/"->"Nombre: SSSS (4, 2) 
+Raiz/FEFEF/SSSS/"[dir=both];
 }
 rank=same{
-"Nombre: cdcdcdc (4, 2) 
-Raiz/fefefe/cdcdcdc/"->"Nombre: xxxxx (5, 2) 
-Raiz/fefefe/xxxxx/"[dir=both];
+"Nombre: SSSS (4, 2) 
+Raiz/FEFEF/SSSS/"->"Nombre: QQQQ (5, 2) 
+Raiz/FEFEF/QQQQ/"[dir=both];
 }
 rank=same{
-"Nombre: xxxxx (5, 2) 
-Raiz/fefefe/xxxxx/"->"Nombre: qwqwqw (6, 2) 
-Raiz/fefefe/qwqwqw/"[dir=both];
+"Nombre: SSSS (0, 4) 
+Raiz/FEFEF/SSSS/"->"Nombre: VFXS (6, 4) 
+Raiz/FEFEF/SSSS/VFXS/"[dir=both];
 }
 rank=same{
-"Nombre: xxxxx (0, 5) 
-Raiz/fefefe/xxxxx/"->"Nombre: yoooooo (7, 5) 
-Raiz/fefefe/xxxxx/yoooooo/"[dir=both];
+"Nombre: VFXS (6, 4) 
+Raiz/FEFEF/SSSS/VFXS/"->"Nombre: WEWEWAAA (7, 4) 
+Raiz/FEFEF/SSSS/WEWEWAAA/"[dir=both];
 }
 rank=same{
-"Nombre: yoooooo (7, 5) 
-Raiz/fefefe/xxxxx/yoooooo/"->"Nombre: wereeeeeee (8, 5) 
-Raiz/fefefe/xxxxx/wereeeeeee/"[dir=both];
+"Nombre: WEWEWAAA (7, 4) 
+Raiz/FEFEF/SSSS/WEWEWAAA/"->"Nombre: PPPPP (8, 4) 
+Raiz/FEFEF/SSSS/PPPPP/"[dir=both];
 }
 rank=same{
-"Nombre: wereeeeeee (0, 8) 
-Raiz/fefefe/xxxxx/wereeeeeee/"->"Nombre: popopop (9, 8) 
-Raiz/fefefe/xxxxx/wereeeeeee/popopop/"[dir=both];
+"Nombre: WEWEWAAA (0, 7) 
+Raiz/FEFEF/SSSS/WEWEWAAA/"->"Nombre: VCVCVZZZZZ (9, 7) 
+Raiz/FEFEF/SSSS/WEWEWAAA/VCVCVZZZZZ/"[dir=both];
 }
 }

@@ -87,14 +87,6 @@ public class ArbolAVL2 {
 
     
 
-    /*public String getNombreArchivo() {
-        return nombreArchivo;
-    }*/
-
-    //private ArrayList<Usuario> mostrar;
-    /*public void setNombreArchivo(String nombreArchivo) {
-        this.nombreArchivo = nombreArchivo;
-    }*/
     private Nodo raiz;
 
     public String getRuta() {
@@ -139,6 +131,29 @@ public class ArbolAVL2 {
         this.ruta=nombreCarpeta;
         this.nombre = nombreOriginal;
         //mostrar = new ArrayList<Usuario>();
+        
+    }
+    Nodo derechaSimple(Nodo x) {
+             Nodo aux = x.hojaDerecha;
+                 x.hojaDerecha = aux.hojaIzquierda;
+            aux.hojaIzquierda = x;
+                 x.factorDeEquilibrio = Math.max(getFe(x.hojaIzquierda), getFe(x.hojaDerecha)) + 1;
+                            aux.factorDeEquilibrio = Math.max(getFe(aux.hojaIzquierda), getFe(aux.hojaDerecha)) + 1;
+            return aux;
+    }
+    public void eliminarHojaArbol(Archivo archivo){
+                            this.inorden2();
+                    for(Archivo a : this.getArchivosList()){
+                    if(a.getNombre().equals(archivo.getNombre())){
+                this.getArchivosList().remove(a);
+                break;
+            }
+                    }
+                    this.raiz = null;
+                    for(Archivo a: this.getArchivosList()){
+                     this.insertarOriginal(a);
+                        }
+        
     }
 
     Nodo buscar(Nodo r, String d) {
@@ -158,7 +173,7 @@ public class ArbolAVL2 {
         return raiz;
     }
 
-    // Devuelve el factor de equilibrio de un Nodo
+    
     int getFe(Nodo x) {
         if (x == null) {
             return -1;
@@ -166,50 +181,39 @@ public class ArbolAVL2 {
 
         return x.factorDeEquilibrio;
     }
-
-    // Rotaci�n simple a la izquierda
+    
+    
+    
     Nodo izquierdaSimple(Nodo x) {
-        Nodo aux = x.hojaIzquierda;
-        x.hojaIzquierda = aux.hojaDerecha;
-        aux.hojaDerecha = x;
-        x.factorDeEquilibrio = Math.max(getFe(x.hojaIzquierda), getFe(x.hojaDerecha)) + 1;
-        aux.factorDeEquilibrio = Math.max(getFe(aux.hojaIzquierda), getFe(aux.hojaDerecha)) + 1;
-        return aux;
+                Nodo aux = x.hojaIzquierda;
+         x.hojaIzquierda = aux.hojaDerecha;
+                aux.hojaDerecha = x;
+                        x.factorDeEquilibrio = Math.max(getFe(x.hojaIzquierda), getFe(x.hojaDerecha)) + 1;
+            aux.factorDeEquilibrio = Math.max(getFe(aux.hojaIzquierda), getFe(aux.hojaDerecha)) + 1;
+                        return aux;
     }
 
-    // Rotaci�n simple a la derecha
-    Nodo derechaSimple(Nodo x) {
-        Nodo aux = x.hojaDerecha;
-        x.hojaDerecha = aux.hojaIzquierda;
-        aux.hojaIzquierda = x;
-        x.factorDeEquilibrio = Math.max(getFe(x.hojaIzquierda), getFe(x.hojaDerecha)) + 1;
-        aux.factorDeEquilibrio = Math.max(getFe(aux.hojaIzquierda), getFe(aux.hojaDerecha)) + 1;
-        return aux;
-    }
+    
+    
 
-    // Rotaci�n doble a la derecha
-    Nodo izquierdaDoble(Nodo x) {
-        Nodo temp;
-        x.hojaIzquierda = derechaSimple(x.hojaIzquierda);
-        temp = izquierdaSimple(x);
-        return temp;
-    }
+    
+    
 
-    // Rotaci�n doble a la izquierda
+    
     Nodo DerechaDoble(Nodo x) {
-        Nodo temp;
-        x.hojaDerecha = izquierdaSimple(x.hojaDerecha);
+              Nodo temp;
+              x.hojaDerecha = izquierdaSimple(x.hojaDerecha);
         temp = derechaSimple(x);
-        return temp;
+                 return temp;
     }
 
-    Nodo insertarHojaEnAvl(Nodo nuevo, Nodo aux) {
-        Nodo nuevoPadre = aux;
-        if (nuevo.archivo.getNombre().compareToIgnoreCase(aux.archivo.getNombre()) < 0) {
-            if (aux.hojaIzquierda == null) {
+                Nodo insertarHojaEnAvl(Nodo nuevo, Nodo aux) {
+           Nodo nuevoPadre = aux;
+                       if (nuevo.archivo.getNombre().compareToIgnoreCase(aux.archivo.getNombre()) < 0) {
+                   if (aux.hojaIzquierda == null) {
                 aux.hojaIzquierda = nuevo;
             } else {
-                aux.hojaIzquierda = insertarHojaEnAvl(nuevo, aux.hojaIzquierda);
+                      aux.hojaIzquierda = insertarHojaEnAvl(nuevo, aux.hojaIzquierda);
                 if ((getFe(aux.hojaIzquierda) - getFe(aux.hojaDerecha)) == 2) {
                     if (nuevo.archivo.getNombre().compareToIgnoreCase(aux.hojaIzquierda.archivo.getNombre()) < 0) {
                         nuevoPadre = izquierdaSimple(aux);
@@ -248,37 +252,24 @@ public class ArbolAVL2 {
         return nuevoPadre;
 
     }
-    public void eliminarHojaArbol(Archivo archivo){
-                            this.inorden2();
-                    for(Archivo a : this.getArchivosList()){
-                    if(a.getNombre().equals(archivo.getNombre())){
-                this.getArchivosList().remove(a);
-                break;
-            }
-                    }
-                    this.raiz = null;
-                    for(Archivo a: this.getArchivosList()){
-                     this.insertarOriginal(a);
-                        }
-        
-    }
+    
 
     public ArbolAVL2 insertarOriginal(Archivo dato) {
         
         Nodo nuevo = new Nodo(dato);
-        this.inorden2();
+            this.inorden2();
         
-        boolean bandera = false;
         
-        for(Archivo a: this.getArchivosList()){
+        
+                    for(Archivo a: this.getArchivosList()){
             if(a.getNombre().equals(dato.getNombre())){
-                int reply = JOptionPane.showConfirmDialog(null, "Nombre de Archivo ya existente, desea continuar?", "Este Nombre Ya Existe", JOptionPane.YES_NO_OPTION);
-                if (reply == JOptionPane.YES_OPTION) {
+        int reply = JOptionPane.showConfirmDialog(null, "Nombre de Archivo ya existente, desea continuar?", "Este Nombre Ya Existe", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
                     this.eliminarHojaArbol(dato);
                     this.insertarOriginal(dato);
                 }
+                    }
             }
-        }
         
         
         //Nodo nuevo = new Nodo(dato);
@@ -319,9 +310,15 @@ public class ArbolAVL2 {
         }
     }
     public void inorden2(){
-        this.setArchivosList(new ArrayList<>());
-        innorden4(this.raiz);
+                this.setArchivosList(new ArrayList<>());
+            innorden4(this.raiz);
         
+    }
+    Nodo izquierdaDoble(Nodo x) {
+        Nodo temp;
+        x.hojaIzquierda = derechaSimple(x.hojaIzquierda);
+        temp = izquierdaSimple(x);
+        return temp;
     }
     
     public void innorden4(Nodo aux){

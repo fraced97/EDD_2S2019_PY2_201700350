@@ -15,12 +15,13 @@ import java.io.PrintWriter;
  */
 public class Pila {
     class nodo{
-		String dato,usuario;
+		String dato,usuario,fecha;
 		nodo siguiente;
 		public nodo(String n,String usuario,String fecha) {
 			this.dato=n;
                         this.usuario=usuario;
 			siguiente=null;
+                        this.fecha=fecha;
 		}
 	}
 	
@@ -52,19 +53,34 @@ public class Pila {
             
             escribir = new PrintWriter(punto.getAbsolutePath()+"//"+"Pila.dot","UTF-8");
             //escribir.println("Arbol.dot", "w")
-            escribir.println("digraph G {\n");
-            escribir.println("some_node [label=<<table border=\"\"\\\"0\"\"\\\"\"\" cellborder=\"\"\\\"1\"\"\\\"\"\" cellspacing=\"\"\\\"0\"\"\\\">\\n");
-            escribir.println("<tr><td></td></tr>");
+            //escribir.println("digraph G {\n");
+             escribir.println("digraph test {\n" +
+                    "    graph [ratio=fill];\n" +
+                    "    node [label=\"\\N\", fontsize=15, shape=plaintext];\n" +
+                    "    arset [label=<\n" +
+                    "        <TABLE ALIGN=\"LEFT\">\n" 
+                    );
+            //escribir.println("node [shape = plaintext]");
+            //escribir.println("some_node [label=<<table border=\"0\" cellborder=\"1\" cellspacing=\"0\">");
+            //escribir.println("<tr><td></td></tr><tr><td");
             nodo temp = this.primero;
             while(temp!=null){
-                escribir.println("<tr><td bgcolor=\"\"\\\"#f0e3ff\"\"\\\">\"\"<font color=\"\"\\\"#ff1020\"\"\\\">\"+str(temp.valor)+\",\"+str(temp.valor2)+\"</font></td></tr>\\n");
+                escribir.println("<TR>");
+                    escribir.println("<TD>");
+                    escribir.println(temp.dato+", "+temp.usuario+", "+temp.fecha);
+                    escribir.println("</TD>");
+                    
+                    escribir.println("</TR>");
+                //escribir.println("<tr><td bgcolor=""\"#f0e3ff""\">""<font color=""\"#ff1020""\">"+","+temp.usuario+temp.dato+"</font></td></tr>");
                 temp = temp.siguiente;
             }
-            escribir.println("</table>>\\n");
-            escribir.println("];\\n");
+            //escribir.println("</table>>");
+            //escribir.println("];");
+            escribir.println(" </TABLE>\n" +
+                    "    >, ];\n" +
+                    "}");
             
-            
-            escribir.println("}");
+            //escribir.println("}");
 
             escribir.close();
                     

@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class HashTable {
 
    
-    private Usuario[] usuario;
+    public Usuario[] usuario;
     int objeto=0;
     int tamanio;
     public static int usuariosIngresadoExito;
@@ -207,9 +207,9 @@ public void graficar(){
         escribir = new PrintWriter(punto.getAbsolutePath() + "//" + "HashTable.dot", "UTF-8");
 
 
-     escribir.println("digraph test {\n" +
+     escribir.println("digraph G {\n" +
                                 "    graph [ratio=fill];\n" +
-             "    node [label=\"\\N\", fontsize=15, shape=plaintext];\n" +
+             "    node [label=\"\\N\", fontsize=20, shape=plaintext];\n" +
           "    arset [label=<\n" +
                               "        <TABLE ALIGN=\"LEFT\">\n" +
               "            <TR>\n" +

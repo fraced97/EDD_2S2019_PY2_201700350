@@ -1,0 +1,104 @@
+digraph test {
+    graph [ratio=fill];
+    node [label="\N", fontsize=15, shape=plaintext];
+    arset [label=<
+        <TABLE ALIGN="LEFT">
+
+<TR>
+<TD>
+Observo la bitacura, Admin, 2019-11-18T04:19:09.291
+</TD>
+</TR>
+<TR>
+<TD>
+Loggeado, Admin, 2019-11-18T04:19:06.172
+</TD>
+</TR>
+<TR>
+<TD>
+Se deslogueo, Jaqui, 2019-11-18T04:18:59.426
+</TD>
+</TR>
+<TR>
+<TD>
+Elimino un Archivo, Jaqui, 2019-11-18T04:18:57.527
+</TD>
+</TR>
+<TR>
+<TD>
+Loggeado, Jaqui, 2019-11-18T04:18:48.252
+</TD>
+</TR>
+<TR>
+<TD>
+Se deslogueo, Mauro, 2019-11-18T04:18:33.176
+</TD>
+</TR>
+<TR>
+<TD>
+Observo el grafo, Mauro, 2019-11-18T04:18:27.275
+</TD>
+</TR>
+<TR>
+<TD>
+Compartio un Archivo, Mauro, 2019-11-18T04:18:24.976
+</TD>
+</TR>
+<TR>
+<TD>
+Creo un Archivo, Mauro, 2019-11-18T04:18:16.327
+</TD>
+</TR>
+<TR>
+<TD>
+Creo una carpeta, Mauro, 2019-11-18T04:18:06.159
+</TD>
+</TR>
+<TR>
+<TD>
+Abrio una Carpeta, Mauro, 2019-11-18T04:18:00.157
+</TD>
+</TR>
+<TR>
+<TD>
+Creo un Archivo, Mauro, 2019-11-18T04:17:57.698
+</TD>
+</TR>
+<TR>
+<TD>
+Creo una carpeta, Mauro, 2019-11-18T04:17:48.626
+</TD>
+</TR>
+<TR>
+<TD>
+Loggeado, Mauro, 2019-11-18T04:17:43.204
+</TD>
+</TR>
+<TR>
+<TD>
+Deslogueado, Admin, 2019-11-18T04:17:32.454
+</TD>
+</TR>
+<TR>
+<TD>
+Vio los reportes de Usuarios, Admin, 2019-11-18T04:16:56.410
+</TD>
+</TR>
+<TR>
+<TD>
+Observo la bitacura, Admin, 2019-11-18T04:16:51.310
+</TD>
+</TR>
+<TR>
+<TD>
+Ingreso Usuarios, Admin, 2019-11-18T04:16:42.386
+</TD>
+</TR>
+<TR>
+<TD>
+Loggeado, Admin, 2019-11-18T04:16:29.216
+</TD>
+</TR>
+ </TABLE>
+    >, ];
+}
